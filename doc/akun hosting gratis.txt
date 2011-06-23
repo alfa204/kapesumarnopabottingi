@@ -52,6 +52,10 @@ Server Control Panel: http://testinglayer.sx33.net:2222
 Username: testin75
 Password: KnrTrD
 ----------------------------------
+Database:	testin75_POIDB
+Host:	localhost -> http://box9.host1free.com:2222
+Username:	testin75_root
+Password:	root123
 
 
 

@@ -421,15 +421,15 @@ function Gettransform( $poi, $db ) {
 
 
 /* Pre-define connection to the MySQL database, please specify these fields.*/
-$dbhost = 'db_hostname';
-$dbdata = 'db_databasename';
-$dbuser = 'db_username';
-$dbpass = 'db_password';
+$dbhost = 'box9.host1free.com';
+$dbdata = 'testin75_POIDB';
+$dbuser = 'testin75_root';
+$dbpass = 'root123';
 
 /* Put parameters from GetPOI request into an associative array named $value */
 
 // Put needed parameter names from GetPOI request in an array called $keys. 
-$keys = array( "layerName", "lat", "lon", "radius" );
+$keys = array( "layerName", "lat", "lon", "radius", "CHECKBOXLIST" );
 
 // Initialize an empty associative array.
 $value = array(); 
