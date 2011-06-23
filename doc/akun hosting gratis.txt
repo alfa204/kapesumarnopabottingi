@@ -1,0 +1,57 @@
+000webhost.com
+
+layertesting.vacau.com
+danangtri
+danangtri20
+
+Domain	layertesting.vacau.com
+Username	a4657579
+Password	******
+Disk Usage	0 / 1500.0 MB
+Bandwidth	100000 MB (100GB)
+Home Root	/home/a4657579
+Server Name	server43.000webhost.com
+IP Address	31.170.160.107
+Apache ver.	2.2.13 (Unix)
+PHP version	5.2.*
+MySQL ver.	5.0.81-community
+Activated On	Setup in Progress..
+Status	 Setup in Progress.
+
+
+MySQL database will be created in 1 minute. Use these details for your PHP scripts:
+
+$mysql_host = "mysql15.000webhost.com";
+$mysql_database = "a4657579_POI";
+$mysql_user = "a4657579_root";
+$mysql_password = "root123";
+
+/////////////////////////////////
+
+Thank you for registering with Host1Free.com!
+
+Domain Name: testinglayer.sx33.net
+Temporary Account URL: http://box9.host1free.com/~testin75
+----------------------------------
+Control Panel URL: http://www.host1free.com/cpanel
+Username: the.end.4ever@gmail.com
+Password: danangtri20
+----------------------------------
+Nameserver 1: ns1.host1free.com
+Nameserver 2: ns2.host1free.com
+----------------------------------
+FTP Access: ftp.testinglayer.sx33.net
+Username: testin75
+Password: KnrTrD
+----------------------------------
+POP Mail: mail.testinglayer.sx33.net
+IMAP: mail.testinglayer.sx33.net
+WebMail: mail.testinglayer.sx33.net
+----------------------------------
+Server Control Panel: http://testinglayer.sx33.net:2222
+Username: testin75
+Password: KnrTrD
+----------------------------------
+
+
+
