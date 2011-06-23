@@ -10,3 +10,10 @@ and open the template in the editor.
     Email : <input type="text" id="email" name="email">
     <input type="submit" value="Register!">
 </form>
+
+<form action="process/login.php" method="POST">
+    Username : <input type="text" id="username" name="username">
+    Password : <input type="text" id="password" name="password">
+    <input type="submit" value="Login!">
+</form>
+
