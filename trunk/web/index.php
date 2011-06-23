@@ -9,9 +9,11 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        hai
         <?php
         // put your code here
+        include 'layout/general_layout/header.php';
+        include 'layout/home_layout/home_content.php';
+        include 'layout/general_layout/footer.php';
         ?>
     </body>
 </html>
