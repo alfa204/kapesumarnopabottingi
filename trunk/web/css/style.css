@@ -17,20 +17,21 @@ root {
 
 .container {
     width: 1000px;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .content {
     float: left;
+    padding: 15px;
 }
 
 .item {
-    
+    padding: 5px;
 }
 
 .item label {
-    width: 15px;
-    margin-right: 3px;
+    padding-right: 10px;
 }
 
 .clearboth {
