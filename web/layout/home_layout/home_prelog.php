@@ -4,7 +4,7 @@ and open the template in the editor.
 -->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <div class="container">
-    <div class="content">
+    <div class="content" style="width: 500px">
         ini content home, about, dll
     </div>
     <div class="content">
