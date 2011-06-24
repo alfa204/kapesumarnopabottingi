@@ -282,6 +282,20 @@ function Getactions( $poi, $db ) {
   	  // Assign each action to $poi["actions"] array. 
   	  $poi["actions"][$count] = $action;
       
+	  if (strcmp($poi["actions"][$count]["label"], "Call")==0) {
+		// action call
+		// add tel to uri
+		$poi["actions"][$count]["uri"] = "tel:".$poi["actions"][$count]["uri"];
+	  } else if (strcmp($poi["actions"][$count]["label"], "Email")==0) {
+		// action email
+		// add mailto to uri
+		$poi["actions"][$count]["uri"] = "mailto:".$poi["actions"][$count]["uri"];
+	  } else if (strcmp($poi["actions"][$count]["label"], "Show Details")==0) {
+		// action show details
+		// add poiID to uri
+		$poi["actions"][$count]["uri"] = $poi["actions"][$count]["uri"]."?poiID=".$poi["id"];
+	  } 
+	  
       // put 'params' into an array of strings
       $paramsArray = array();
       if (substr_count($action['params'],',')) {
