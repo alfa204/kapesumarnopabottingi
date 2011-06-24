@@ -20,11 +20,11 @@ and open the template in the editor.
         <div class="content">
             <button>POI MANAGEMENT</button>
         </div>
-        <div class="content" style="width: 965; border-style: solid">
+        <div class="content">
             <button>USER MANAGEMENT</button>
         </div>
     </div>
-    <div class="content">
+    <div class="content" style="width: 965; border-style: solid">
         ini isinya, pake ajax?
     </div>
     <div class="clearboth"></div>
