@@ -16,14 +16,14 @@
     $username = mysql_real_escape_string($username);
     $password = mysql_real_escape_string($password);
     $email = mysql_real_escape_string($email);
-    
+
     $query =
     "INSERT INTO ".$database->t_poiuser."(
         name,
         username,
         password,
         email,
-        statusAdmin,
+        statusAdmin
     ) VALUES (
         '".$name."',
         '".$username."',

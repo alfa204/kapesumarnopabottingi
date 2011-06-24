@@ -6,7 +6,7 @@ and open the template in the editor.
 <form action="process/registration.php" method="POST">
     Name : <input type="text" id="name" name="name">
     Username : <input type="text" id="username" name="username">
-    Password : <input type="text" id="password" name="password">
+    Password : <input type="password" id="password" name="password">
     Email : <input type="text" id="email" name="email">
     <input type="submit" value="Register!">
 </form>
