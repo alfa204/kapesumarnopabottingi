@@ -42,14 +42,21 @@ function sendGetRequestToServerAndResponse(requester,fileRequest,idDiv, async)
 }
 
 function getXmlHttpRequestObject() {
-	if (window.XMLHttpRequest) {
-		return new XMLHttpRequest();
-	} else if(window.ActiveXObject) {
-		return new ActiveXObject("Microsoft.XMLHTTP");
-	} else {
-		document.getElementById('status_div').innerHTML =
-		'Status: Cound not create XmlHttpRequest Object.' +
-		'Consider upgrading your browser.';
-	}
-	return null;
+    if (window.XMLHttpRequest) {
+        return new XMLHttpRequest();
+    } else if(window.ActiveXObject) {
+        return new ActiveXObject("Microsoft.XMLHTTP");
+    } else {
+        document.getElementById('status_div').innerHTML =
+        'Status: Cound not create XmlHttpRequest Object.' +
+    'Consider upgrading your browser.';
+    }
+    return null;
+}
+
+function buttonOnClick(fileRequest, idDiv){
+    //event.preventDefault();
+    var ajax = createXMLHttpRequestObject();
+    sendGetRequestToServerAndResponse(ajax,fileRequest,idDiv, true);
+    return false;
 }

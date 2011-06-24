@@ -1,6 +1,5 @@
 <?php
     include_once 'connection/sessionHandler.php';
-
     $session = new SessionHandler();
 ?>
 <!--
@@ -12,6 +11,7 @@ and open the template in the editor.
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/style.css" type="text/css" />
+        <script type="text/javascript" src="script/AJAX.js"></script>
         <title></title>
     </head>
     <body>
