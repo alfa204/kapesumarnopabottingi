@@ -24,7 +24,9 @@ and open the template in the editor.
             <button>USER MANAGEMENT</button>
         </div>
         <div class="content">
-            <button>LOGOUT</button>
+            <form action="process/logout.php" method="POST">
+                <button>LOGOUT</button>
+            </form>
         </div>
     </div>
     <div class="content" style="width: 965; border-style: solid">

@@ -1,3 +1,8 @@
+<?php
+    include_once 'connection/sessionHandler.php';
+
+    $session = new SessionHandler();
+?>
 <!--
 To change this template, choose Tools | Templates
 and open the template in the editor.
@@ -13,7 +18,12 @@ and open the template in the editor.
         <?php
         // put your code here
         include 'layout/general_layout/header.php';
-        include 'layout/home_layout/home_content.php';
+
+        if ($session->isLoggedIn) {
+            include 'layout/home_layout/home_content.php';
+        } else {
+            include 'layout/home_layout/home_prelog.php';
+        }
         include 'layout/general_layout/footer.php';
         ?>
     </body>
