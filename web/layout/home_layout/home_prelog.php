@@ -1,3 +1,4 @@
+
 <!--
 To change this template, choose Tools | Templates
 and open the template in the editor.
@@ -7,21 +8,24 @@ and open the template in the editor.
     <div class="content" style="width: 678px; height: 500px; border-style: solid">
         <div class="content" style="border-style: solid">
             <div class="content">
-                <button>HOME</button>
+                <button onclick="buttonOnClick('layout/general_layout/homecontent_layout.php','ajax_wrapper')">HOME</button>
             </div>
             <div class="content">
-                <button>PRODUK</button>
+                <button onclick="buttonOnClick('layout/general_layout/product_layout.php','ajax_wrapper')">PRODUK</button>
             </div>
             <div class="content">
-                <button>ABOUT</button>
+                <button onclick="buttonOnClick('layout/general_layout/about_layout.php','ajax_wrapper')">ABOUT</button>
             </div>
             <div class="content">
-                <button>KONTAK</button>
+                <button onclick="buttonOnClick('layout/general_layout/contact_layout.php','ajax_wrapper')">KONTAK</button>
             </div>
         </div>
         <div class="clearboth"></div>
         <div class="content" id="menucontent" style="border-style: solid">
             isinya, pake ajax?
+            <div id="ajax_wrapper">
+                
+            </div>
         </div>
     </div>
     <div class="content" style="width: 250px; height: 500px; border-style: solid">
