@@ -13,7 +13,7 @@ and open the template in the editor.
         <?php
         // put your code here
         include 'layout/general_layout/header.php';
-        include 'layout/home_layout/home_content.php';
+        include 'layout/home_layout/home_prelog.php';
         include 'layout/general_layout/footer.php';
         ?>
     </body>
