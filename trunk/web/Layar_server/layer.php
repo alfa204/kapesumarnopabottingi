@@ -153,7 +153,7 @@ function Gethotspots( $db, $value ) {
                   	   cos((:lat2 * pi() / 180)) * cos((lat * pi() / 180)) * 
                        cos((:long  - lon) * pi() / 180))
                       ) * 180 / pi()) * 60 * 1.1515 * 1.609344 * 1000) as distance
-    		FROM POI_Table
+    		FROM poi_table
 			WHERE ( Checkbox & :checkbox )!=0
     		HAVING distance < :radius
     		ORDER BY distance ASC
@@ -187,7 +187,7 @@ function Gethotspots( $db, $value ) {
 	
   }//if 
   else { 
-  	
+  	$imageURL_parent = "http://testinglayer.sx33.net/image/";
   	// Put each POI information into $response["hotspots"] array.
  	foreach ( $pois as $poi ) {
 		
@@ -213,6 +213,9 @@ function Gethotspots( $db, $value ) {
     	// Change to demical value with function ChangetoFloat
     	$poi["distance"] = ChangetoFloat( $poi["distance"] );
 	
+		// Add image url poi to relative parent
+		$poi["imageURL"] = $imageURL_parent.$poi["imageURL"];
+		
     	// Put the poi into the response array.
     	$response["hotspots"][$i] = $poi;
     	$i++;
@@ -248,7 +251,7 @@ function Getactions( $poi, $db ) {
   										closeBiw,
   										showActivity,
   										activityMessage
-    						   	 FROM ACTION_Table
+    						   	 FROM action_table
     						     WHERE poiID = :id " ); 
     						     
   // Binds the named parameter markers ":id" to the specified parameter values "$poi['id']".							   
@@ -329,7 +332,7 @@ function Getobject( $poi, $db ) {
   // "poiID" which shows the POI id that this object belongs to. 
   // The SQL statement returns object which has the same poiID as the id of $poi ($poi['id']).
   $sql_object = $db->prepare( " SELECT baseURL, full, reduced, icon, size 
-    						   	 FROM OBJECT_Table
+    						   	 FROM object_table
     						     WHERE poiID = :id 
     						     LIMIT 0,1 " ); 
     						     
@@ -379,7 +382,7 @@ function Gettransform( $poi, $db ) {
   // "poiID" which shows the POI id that this transform belongs to. 
   // The SQL statement returns transform which has the same poiID as the id of $poi ($poi['id']).
   $sql_transform = $db->prepare( " SELECT rel, angle, scale
-    						   	 FROM TRANSFORM_Table
+    						   	 FROM transform_table
     						     WHERE poiID = :id 
     						     LIMIT 0,1 " ); 
     						     
