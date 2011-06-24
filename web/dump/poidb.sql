@@ -154,17 +154,17 @@ CREATE TABLE IF NOT EXISTS `poi_table` (
 -- Dumping data for table `poi_table`
 --
 
-INSERT INTO `poi_table` (`id`, `userid`, `attribution`, `title`, `lat`, `lon`, `imageURL`, `line4`, `line3`, `line2`, `type`, `dimension`, `alt`, `relativeAlt`, `distance`, `inFocus`, `doNotIndex`, `showSmallBiw`, `showBiwOnClick`, `Checkbox`) VALUES
-('1', 0, 'The Location of the Layar Office', 'The Layar Office', '52.3741180000', '4.9342500000', 'http://custom.layar.nl/Layar_banner_icon.png', '1019DW Amsterdam', 'distance:%distance%', 'Rietlandpark 301', 0, 1, NULL, NULL, '0.0000000000', 0, 0, 1, 1, '1'),
-('2', 0, 'Lokasi Sumarno Pabottingi', 'Kantor SP', '-6.1923830000', '106.8376840000', 'http://layertesting.vacau.com/image/SP.jpg', 'Jakarta Pusat', 'distance:%distance%', 'Jl. Cikini 5 No 12', 0, 1, NULL, NULL, '0.0000000000', 0, 0, 1, 1, '1'),
-('3', 0, 'Kosan Akbar DAnang', 'Kos Akbar Danang', '-6.1874390000', '106.8367450000', 'http://custom.layar.nl/Layar_banner_icon.png', '1019DW Amsterdam', 'distance:%distance%', 'Rietlandpark 301', 1, 1, NULL, NULL, '0.0000000000', 0, 0, 1, 1, '2'),
-('4', 0, 'Monumen Nasional Jakarta', 'Monas', '-6.1751760000', '106.8271910000', 'http://layertesting.vacau.com/image/Monas.jpg', 'Jakarta Pusat', 'distance:%distance%', 'Jl. Medan Merdeka', 0, 1, NULL, NULL, '0.0000000000', 0, 0, 1, 1, '1'),
-('5', 0, 'Stasiun Gambir ', 'Stasiun Gambir', '-6.1765630000', '106.8308170000', 'http://layertesting.vacau.com/image/GAMBIR.jpg', 'Jakarta Pusat', 'distance:%distance%', 'Jl. Medan Merdeka Timur', 0, 1, NULL, NULL, '0.0000000000', 0, 0, 1, 1, '1'),
-('6', 0, 'Hotel Green Alia Cikini', 'Hotel Green Alia Cikini', '-6.1924360000', '106.8381240000', 'http://layertesting.vacau.com/image/GRENALIACIKINI.jpg', 'Jakarta Pusat', 'distance:%distance%', 'Jl. Cikini Raya No.46', 2, 1, NULL, NULL, '0.0000000000', 0, 0, 1, 1, '2'),
-('7', 0, 'Hotel Sofyan Cikini', 'Hotel Sofyan Cikini', '-6.1920310000', '106.8391220000', 'http://layertesting.vacau.com/image/SOFYANCIKINI.jpg', 'Jakarta Pusat', 'distance:%distance%', 'alan Cikini Raya No. 79 ', 2, 1, NULL, NULL, '0.0000000000', 0, 0, 1, 1, '2'),
-('8', 0, 'Taman Ismail Marzuki', 'Taman Ismail Marzuki', '-6.1899830000', '106.8391330000', 'http://layertesting.vacau.com/image/TIM.jpg', 'Jakarta Pusat', 'distance:%distance%', 'Jl. Cikini Raya 73', 0, 1, NULL, NULL, '0.0000000000', 0, 0, 1, 1, '1'),
-('9', 0, 'Taman Menteng (update lagi)', 'Taman Menteng', '-6.1962760000', '106.8296000000', 'http://layertesting.vacau.com/image/TAMANMENTENG.jpg', 'Jakarta Pusat', 'distance:%distance%', 'Jl, Raya HOS Cokroaminoto', 0, 1, NULL, NULL, '0.0000000000', 0, 0, 1, 1, '1'),
-('10', 0, 'Museum Joeang 45', 'Museum Joeang 45', '-6.1861220000', '106.8365420000', 'http://layertesting.vacau.com/image/MUSEUMJOEANG.jpg', 'Jakarta Pusat', 'distance:%distance%', 'Jl. Menteng Raya', 0, 1, NULL, NULL, '0.0000000000', 0, 0, 1, 1, '1');
+INSERT INTO `poi_table` (`id`, `userid`, `attribution`, `title`, `lat`, `lon`, `imageURL`, `line3`, `line4`, `line2`, `type`, `dimension`, `alt`, `relativeAlt`, `distance`, `inFocus`, `doNotIndex`, `showSmallBiw`, `showBiwOnClick`, `Checkbox`) VALUES
+('1', 0, 'The Location of the Layar Office', 'The Layar Office', '52.3741180000', '4.9342500000', 'Layar_banner_icon.png', '1019DW Amsterdam', 'distance:%distance%', 'Rietlandpark 301', 0, 1, NULL, NULL, '0.0000000000', 0, 0, 1, 1, '1'),
+('2', 0, 'Lokasi Sumarno Pabottingi', 'Kantor SP', '-6.1923830000', '106.8376840000', 'SP.jpg', 'Jakarta Pusat', 'distance:%distance%', 'Jl. Cikini 5 No 12', 0, 1, NULL, NULL, '0.0000000000', 0, 0, 1, 1, '1'),
+('3', 0, 'Kosan Akbar DAnang', 'Kos Akbar Danang', '-6.1874390000', '106.8367450000', 'Layar_banner_icon.png', '1019DW Amsterdam', 'distance:%distance%', 'Rietlandpark 301', 1, 1, NULL, NULL, '0.0000000000', 0, 0, 1, 1, '2'),
+('4', 0, 'Monumen Nasional Jakarta', 'Monas', '-6.1751760000', '106.8271910000', 'Monas.jpg', 'Jakarta Pusat', 'distance:%distance%', 'Jl. Medan Merdeka', 0, 1, NULL, NULL, '0.0000000000', 0, 0, 1, 1, '1'),
+('5', 0, 'Stasiun Gambir ', 'Stasiun Gambir', '-6.1765630000', '106.8308170000', 'GAMBIR.jpg', 'Jakarta Pusat', 'distance:%distance%', 'Jl. Medan Merdeka Timur', 0, 1, NULL, NULL, '0.0000000000', 0, 0, 1, 1, '1'),
+('6', 0, 'Hotel Green Alia Cikini', 'Hotel Green Alia Cikini', '-6.1924360000', '106.8381240000', 'GRENALIACIKINI.jpg', 'Jakarta Pusat', 'distance:%distance%', 'Jl. Cikini Raya No.46', 2, 1, NULL, NULL, '0.0000000000', 0, 0, 1, 1, '2'),
+('7', 0, 'Hotel Sofyan Cikini', 'Hotel Sofyan Cikini', '-6.1920310000', '106.8391220000', 'SOFYANCIKINI.jpg', 'Jakarta Pusat', 'distance:%distance%', 'alan Cikini Raya No. 79 ', 2, 1, NULL, NULL, '0.0000000000', 0, 0, 1, 1, '2'),
+('8', 0, 'Taman Ismail Marzuki', 'Taman Ismail Marzuki', '-6.1899830000', '106.8391330000', 'TIM.jpg', 'Jakarta Pusat', 'distance:%distance%', 'Jl. Cikini Raya 73', 0, 1, NULL, NULL, '0.0000000000', 0, 0, 1, 1, '1'),
+('9', 0, 'Taman Menteng (update lagi)', 'Taman Menteng', '-6.1962760000', '106.8296000000', 'TAMANMENTENG.jpg', 'Jakarta Pusat', 'distance:%distance%', 'Jl, Raya HOS Cokroaminoto', 0, 1, NULL, NULL, '0.0000000000', 0, 0, 1, 1, '1'),
+('10', 0, 'Museum Joeang 45', 'Museum Joeang 45', '-6.1861220000', '106.8365420000', 'MUSEUMJOEANG.jpg', 'Jakarta Pusat', 'distance:%distance%', 'Jl. Menteng Raya', 0, 1, NULL, NULL, '0.0000000000', 0, 0, 1, 1, '1');
 
 -- --------------------------------------------------------
 
