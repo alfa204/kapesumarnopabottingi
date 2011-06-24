@@ -33,7 +33,7 @@ and open the template in the editor.
                 </div>
                 <div class="item">
                     <label>Password :</label>
-                    <input type="text" id="password" name="password">
+                    <input type="password" id="password" name="password">
                 </div>
                 <div class="item">
                     <input type="submit" value="Login!">
@@ -53,6 +53,10 @@ and open the template in the editor.
                 <div class="item">
                     <label>Password :</label>
                     <input type="text" id="password" name="password">
+                </div>
+                <div class="item">
+                    <label> Konfirm Password :</label>
+                    <input type="password" id="password" name="password">
                 </div>
                 <div class="item">
                     <label>Email :</label>
