@@ -3,8 +3,8 @@ To change this template, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<div class="container">
-    <div class="content" style="width: inherit;">
+<div class="container" style="border-style: solid">
+    <div class="content" style="width: 965; border-style: solid">
         <div class="content">
             <button>HOME</button>
         </div>
@@ -20,7 +20,7 @@ and open the template in the editor.
         <div class="content">
             <button>POI MANAGEMENT</button>
         </div>
-        <div class="content">
+        <div class="content" style="width: 965; border-style: solid">
             <button>USER MANAGEMENT</button>
         </div>
     </div>
