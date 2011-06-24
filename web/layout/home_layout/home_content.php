@@ -23,6 +23,9 @@ and open the template in the editor.
         <div class="content">
             <button>USER MANAGEMENT</button>
         </div>
+        <div class="content">
+            <button>LOGOUT</button>
+        </div>
     </div>
     <div class="content" style="width: 965; border-style: solid">
         ini isinya, pake ajax?
