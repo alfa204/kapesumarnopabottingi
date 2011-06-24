@@ -7,7 +7,7 @@ class SessionHandler {
     // sesi yang disimpan
     public $activeUser = NULL;
     
-    public $id_role;
+    public $statusAdmin;
     public $name;
     public $username;
     public $password;
@@ -30,7 +30,7 @@ class SessionHandler {
         if (isset($_SESSION['activeUser'])) {
             $this->isLoggedIn = true;
             $this->activeUser = $_SESSION['activeUser'];
-            $this->id_role = $this->activeUser['id_role'];
+            $this->statusAdmin = $this->activeUser['statusAdmin'];
             $this->name = $this->activeUser['name'];
             $this->username = $this->activeUser['username'];
             $this->password = $this->activeUser['password'];
@@ -42,7 +42,7 @@ class SessionHandler {
     // fungsi untuk men-set semua sesi yang dibutuhkan
     public function setSession($activeUser) {
         $this->activeUser = $activeUser;
-        $this->id_role = $this->activeUser['id_role'];
+        $this->statusAdmin = $this->activeUser['statusAdmin'];
         $this->name = $this->activeUser['name'];
         $this->username = $this->activeUser['username'];
         $this->password = $this->activeUser['password'];
