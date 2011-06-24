@@ -3,17 +3,29 @@ To change this template, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<form action="process/registration.php" method="POST">
-    Name : <input type="text" id="name" name="name">
-    Username : <input type="text" id="username" name="username">
-    Password : <input type="password" id="password" name="password">
-    Email : <input type="text" id="email" name="email">
-    <input type="submit" value="Register!">
-</form>
-
-<form action="process/login.php" method="POST">
-    Username : <input type="text" id="username" name="username">
-    Password : <input type="text" id="password" name="password">
-    <input type="submit" value="Login!">
-</form>
-
+<div class="container">
+    <div class="content" style="width: inherit;">
+        <div class="content">
+            <button>HOME</button>
+        </div>
+        <div class="content">
+            <button>PRODUK</button>
+        </div>
+        <div class="content">
+            <button>ABOUT</button>
+        </div>
+        <div class="content">
+            <button>KONTAK</button>
+        </div>
+        <div class="content">
+            <button>POI MANAGEMENT</button>
+        </div>
+        <div class="content">
+            <button>USER MANAGEMENT</button>
+        </div>
+    </div>
+    <div class="content">
+        ini isinya, pake ajax?
+    </div>
+    <div class="clearboth"></div>
+</div>

@@ -4,8 +4,25 @@ and open the template in the editor.
 -->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <div class="container">
-    <div class="content" style="width: 650px; height: 500px; border-style: solid">
-        ini content home, about, dll
+    <div class="content" style="width: 678px; height: 500px; border-style: solid">
+        <div class="content">
+            <div class="content">
+                <button>HOME</button>
+            </div>
+            <div class="content">
+                <button>PRODUK</button>
+            </div>
+            <div class="content">
+                <button>ABOUT</button>
+            </div>
+            <div class="content">
+                <button>KONTAK</button>
+            </div>
+        </div>
+        <div class="clearboth"></div>
+        <div class="content">
+            isinya, pake ajax?
+        </div>
     </div>
     <div class="content" style="width: 250px; height: 500px; border-style: solid">
         <div id="content">
