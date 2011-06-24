@@ -7,13 +7,13 @@ class SessionHandler {
     // sesi yang disimpan
     public $activeUser = NULL;
     
-    public $statusAdmin;
     public $name;
     public $username;
     public $password;
     public $email;
-    
-    // METHOD
+    public $statusAdmin;
+
+// METHOD
     // konstruktor
     public function __construct() {
         $this->isOn = session_start();
