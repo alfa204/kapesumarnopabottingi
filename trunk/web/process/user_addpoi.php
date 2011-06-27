@@ -23,6 +23,8 @@
     $imagefull = $_POST['imagefull'];
     $imagereduced = $_POST['imagereduced'];
     $imageicon = $_POST['imageicon'];
+    $deskripsi = $_POST['deskripsi'];
+    $kategori = $_POST['kategori'];
     
     $query =
     "INSERT INTO ".$database->t_poiapproval."(
@@ -37,7 +39,9 @@
         tagline,
         image_full,
         image_reduced,
-        image_icon
+        image_icon,
+        deskripsi,
+        kategori
     ) VALUES (
         '".$userid."',
         '".$title."',
@@ -50,7 +54,9 @@
         '".$tagline."',
         '".$imagefull."',
         '".$imagereduced."',
-        '".$imageicon."'
+        '".$imageicon."',
+        '".$deskripsi."',
+        '".$kategori."'
     )";
     
     if ($database->execQuery($query)) {
