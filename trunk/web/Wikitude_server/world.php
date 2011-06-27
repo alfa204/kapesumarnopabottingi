@@ -174,6 +174,36 @@ function GetInfoDetails($poiID, $db) {
   return $array_info;
 }
 
+function GetThumbnail($db, $poiID) {
+	$sql_actions = $db->prepare( " SELECT baseURL, 
+  										icon_wiki
+    						   	 FROM object_table
+    						     WHERE poiID = :id " ); 
+								 
+	// Binds the named parameter markers ":id" to the specified parameter values "$poi['id']".							   
+  $sql_actions->bindParam( ':id', $poiID, PDO::PARAM_INT );
+    
+  // Use PDO::execute() to execute the prepared statement $sql_actions. 
+  $sql_actions->execute();
+  
+  // Iterator for the $poi["actions"] array.
+  $count = 0; 
+    
+  // Fetch all the poi actions. 
+  $actions = $sql_actions->fetchAll( PDO::FETCH_ASSOC );
+  /* Process the $actions result */
+   // if $actions array is empty, return empty array. 
+  if ( empty( $actions ) ) {
+  	$thumbnail = array();
+  }//if 
+  else {
+  	foreach ( $actions as $action ) {
+		$thumbnail = $action["baseURL"].$action["icon_wiki"];
+	}
+  }
+  return $thumbnail;
+}
+
 
 // Put received POIs into an associative array.
 //
@@ -191,7 +221,7 @@ function Gethotspots( $db, $value ) {
 	   The distance is caculated based on the Haversine formula. 
 	   Note: this way of calculation is not scalable for querying large database.
 */
-	$radiusSet = "5000"; //REQUIRED - retrieve POIs (Points of Interests) from database within this search radius in meters from the current location of the Wikitude user
+	$radiusSet = "15000"; //REQUIRED - retrieve POIs (Points of Interests) from database within this search radius in meters from the current location of the Wikitude user
 	
   // Use PDO::prepare() to prepare SQL statement. 
   // This statement is used due to security reasons and will help prevent general SQL injection attacks.
@@ -217,6 +247,7 @@ function Gethotspots( $db, $value ) {
 						  ) * 180 / pi()) * 60 * 1.1515 * 1.609344 * 1000) as distance,
 				deskripsi
 				FROM poi_table
+				HAVING distance < :radius
 				ORDER BY distance ASC
 				LIMIT 0, :max " );
 	} else {
@@ -251,8 +282,8 @@ function Gethotspots( $db, $value ) {
   $sql->bindParam( ':long', $value['longitude'], PDO::PARAM_STR );
   $intmaxnumber = (int)$value['maxNumberOfPois'];
   $sql->bindParam( ':max', $intmaxnumber, PDO::PARAM_INT );
-  //$distanceLLA = 0.01 * $radiusSet / 1112;
-  //$sql->bindParam( ':radius', $distanceLLA, PDO::PARAM_INT );
+  $distanceLLA = (int) $radiusSet / 1.112;
+  $sql->bindParam( ':radius', $distanceLLA, PDO::PARAM_INT );
   if (isset($value['searchterm']))
 	$sql->bindParam( ':searchterm', $value['searchterm'], PDO::PARAM_STR );
 	
@@ -281,7 +312,7 @@ function Gethotspots( $db, $value ) {
 		$poi_obj = new PowerHour_Wikitude_POI("testinglayer-sp-kape.com",$poi["title"]);
 		$poi_obj->setId($poi["id"]);
 		$poi_obj->setDescription($poi["deskripsi"].$poi["attribution"]);
-		//$poi_obj->setThumbnail(GetThumbnail($poi["id"]));
+		$poi_obj->setThumbnail(GetThumbnail($db, $poi["id"]));
 		$poi_obj->setThumbnail(null);
 		$array_info = GetInfoDetails($poi["id"], $db);
 		$poi_obj->setPhone($array_info["phone"]);
