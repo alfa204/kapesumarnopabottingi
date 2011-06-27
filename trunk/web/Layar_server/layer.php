@@ -463,8 +463,63 @@ try {
 catch(Exception $e) {
   echo 'Message: ' .$e->getMessage();
 }
- 
- 
+
+//------------------------------------------------------------------------------
+/* Update database saat ada Http request ke sini */
+//------------------------------------------------------------------------------
+include_once '../../connection/databaseHandler.php';
+$db = new DatabaseHandler();
+$today = getdate();
+$yesterday = mktime(0,0,0,date("m"),date("d")-1,date("Y"));
+
+$mysqldatetoday = date( 'Y-m-d H:i:s', $today );
+$mysqldateyesterday = date( 'Y-m-d H:i:s', $yesterday );
+
+$today = strtotime( $mysqldatetoday );
+$yesterday = strtotime( $mysqldateyesterday );
+
+
+//SELECT semua data dari dynamictext yang udah diapprove dan start datenya sama ma hari ini
+$querySelectStartDate = "SELECT * FROM ".$db->t_dynamictext." WHERE isapproved=1 AND  start_date=".$today."";
+$querySelectEndDate = "SELECT * FROM ".$db->t_dynamictext." WHERE isapproved=1 AND  end_date=".$yesterday."";
+
+//Exec Query
+$resultStart = $db->execQuery($querySelectStartDate);
+$resultEnd = $db->execQuery($querySelectEndDate);
+
+//Update StartDate :
+while ($rowStart = mysql_fetch_array($resultStart, MYSQL_ASSOC)) {
+    $text = $rowStart['text'];
+    $poi_id = $rowStart['poi_id'];
+    $queryUpdateStart = "UPDATE ".$db->t_poi."
+                SET
+                    attribution='$text'
+                WHERE
+                    id = '$poi_id'";
+    $db->execQuery($queryUpdateStart);
+}
+
+//Update EndDate :
+//Update StartDate :
+while ($rowEnd = mysql_fetch_array($resultEnd, MYSQL_ASSOC)) {
+    $text = "";
+    $poi_id = $rowEnd['poi_id'];
+    $queryUpdateStart = "UPDATE ".$db->t_poi."
+                SET
+                    attribution='$text'
+                WHERE
+                    id = '$poi_id'";
+    $db->execQuery($queryUpdateStart);
+}
+
+//------------------------------------------------------------------------------
+/* End of kedodolan */
+//------------------------------------------------------------------------------
+
+
+
+
+
 try {
 	/* Connect to MySQL server. We use PDO which is a PHP extension to formalise database connection.
 	   For more information regarding PDO, please see http://php.net/manual/en/book.pdo.php. 
