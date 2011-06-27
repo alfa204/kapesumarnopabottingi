@@ -74,10 +74,10 @@ $session = new SessionHandler();
     </form>
 </div>
 <div>
-    <form>
+    <form action="process/user_addtagline.php" method="POST">
         <div class="item">
             <label>POI : </label>
-            <select>
+            <select id="poiname" name="poiname">
                 <?php
                 //$query2 = "SELECT title FROM " . $database->t_poi . " WHERE userid=" . $row['userid'];
                 $query3 = "SELECT title FROM " . $database->t_poi . " WHERE userid=0";

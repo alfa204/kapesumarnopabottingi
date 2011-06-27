@@ -4,7 +4,7 @@
     $database = new DatabaseHandler();
     $session = new SessionHandler();
     
-    // Get userid dati active user
+    // Get userid dari active user
     $query = "SELECT userid FROM ".$database->t_poiuser." WHERE name='".$session->name."'";
     $result = $database->execQuery($query);
     while ($row = mysql_fetch_array($result)) {
