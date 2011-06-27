@@ -4,7 +4,7 @@ include_once '../../../connection/sessionHandler.php';
 $database = new DatabaseHandler();
 $session = new SessionHandler();
 ?>
-<div class="content">
+<div class="content" style="border-style: solid">
     <table border="1">
         <tr>
             <th>NO</th>
@@ -50,15 +50,15 @@ $session = new SessionHandler();
         ?>
     </table>
 </div>
-<div class="content">
+<div class="content" style="border-style: solid">
     <form action="process/user_addpoi.php" method="POST">
         <div class="item">
             <label>Title :</label>
             <input type="text" id="title" name="title">
         </div>
         <div class="item">
-            <label>Attribution :</label>
-            <input type="text" id="attribution" name="attribution">
+            <label> Tagline :</label>
+            <input type="text" id="tagline" name="tagline">
         </div>
         <div class="item">
             <label>Latitude :</label>
@@ -69,11 +69,39 @@ $session = new SessionHandler();
             <input type="text" id="lon" name="lon">
         </div>
         <div class="item">
+            <label> Address :</label>
+            <input type="text" id="address" name="address">
+        </div>
+        <div class="item">
+            <label> Phone :</label>
+            <input type="text" id="phone" name="phone">
+        </div>
+        <div class="item">
+            <label> Email :</label>
+            <input type="text" id="email" name="email">
+        </div>
+        <div class="item">
+            <label> Image URL :</label>
+            <input type="file" id="imageurl" name="imageurl">
+        </div>
+        <div class="item">
+            <label> Image Full (256x256) :</label>
+            <input type="file" id="imagefull" name="imagefull">
+        </div>
+        <div class="item">
+            <label> Image Reduced (128x128) :</label>
+            <input type="file" id="imagereduced" name="imagereduced">
+        </div>
+        <div class="item">
+            <label> Image Icon (32x32) :</label>
+            <input type="file" id="imageicon" name="imageicon">
+        </div>
+        <div class="item">
             <input type="submit" value="Add New POI">
         </div>
     </form>
 </div>
-<div>
+<div class="content" style="border-style: solid">
     <form action="process/user_addtagline.php" method="POST">
         <div class="item">
             <label>POI : </label>

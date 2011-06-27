@@ -13,26 +13,44 @@
     
     // Get informasi dari form
     $title = $_POST['title'];
-    $attribution = $_POST['attribution'];
+    $tagline = $_POST['tagline'];
+    $address = $_POST['address'];
+    $phone = $_POST['phone'];
+    $email = $_POST['email'];
     $lat = $_POST['lat'];
     $lon = $_POST['lon'];
-    $distance = 0.00;
+    $imageurl = $_POST['imageurl'];
+    $imagefull = $_POST['imagefull'];
+    $imagereduced = $_POST['imagereduced'];
+    $imageicon = $_POST['imageicon'];
     
     $query =
-    "INSERT INTO ".$database->t_poi."(
+    "INSERT INTO ".$database->t_poiapproval."(
         userid,
-        attribution,
         title,
         lat,
         lon,
-        distance
+        imageURL,
+        address,
+        phone,
+        email,
+        tagline,
+        image_full,
+        image_reduced,
+        image_icon
     ) VALUES (
         '".$userid."',
-        '".$attribution."',
         '".$title."',
         '".$lat."',
         '".$lon."',
-        '".$distance."'
+        '".$imageurl."',
+        '".$address."',
+        '".$phone."',
+        '".$email."',
+        '".$tagline."',
+        '".$imagefull."',
+        '".$imagereduced."',
+        '".$imageicon."'
     )";
     
     if ($database->execQuery($query)) {
