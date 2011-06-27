@@ -23,6 +23,7 @@
     $imagefull = $_POST['imagefull'];
     $imagereduced = $_POST['imagereduced'];
     $imageicon = $_POST['imageicon'];
+    $imagewiki = $_POST['imagewiki'];
     $deskripsi = $_POST['deskripsi'];
     $kategori = $_POST['kategori'];
     
@@ -40,6 +41,7 @@
         image_full,
         image_reduced,
         image_icon,
+        image_wiki,
         deskripsi,
         kategori
     ) VALUES (
@@ -55,6 +57,7 @@
         '".$imagefull."',
         '".$imagereduced."',
         '".$imageicon."',
+        '".$imagewiki."',
         '".$deskripsi."',
         '".$kategori."'
     )";
