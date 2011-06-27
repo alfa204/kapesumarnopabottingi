@@ -15,38 +15,37 @@ $session = new SessionHandler();
         <?php
         $query1 = "SELECT userid FROM " . $database->t_poiuser . " WHERE name='" . $session->name . "'";
         $result1 = $database->execQuery($query1);
-        while ($row = mysql_fetch_array($result1)) {
-            $query2 = "SELECT title FROM ".$database->t_poi." WHERE userid=".$row['userid'];
-            //$query2 = "SELECT title FROM " . $database->t_poi . " WHERE userid=0";
-            $result2 = $database->execQuery($query2);
-            $idx = 0;
-            while ($row2 = mysql_fetch_array($result2)) {
-                $idx++;
-                ?>
-                <tr>
-                    <td>
-                        <div>
-                            <?php echo $idx ?>
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <?php echo $row2['title'] ?>
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <button>Edit</button>
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <button>Delete</button>
-                        </div>
-                    </td>
-                </tr>
-                <?php
-            }
+        $row = mysql_fetch_array($result1);
+        $query2 = "SELECT title FROM " . $database->t_poi . " WHERE userid=" . $row['userid'];
+        //$query2 = "SELECT title FROM " . $database->t_poi . " WHERE userid=0";
+        $result2 = $database->execQuery($query2);
+        $idx = 0;
+        while ($row2 = mysql_fetch_array($result2)) {
+            $idx++;
+            ?>
+            <tr>
+                <td>
+                    <div>
+                        <?php echo $idx ?>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <?php echo $row2['title'] ?>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <button>Edit</button>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <button>Delete</button>
+                    </div>
+                </td>
+            </tr>
+            <?php
         }
         ?>
     </table>
