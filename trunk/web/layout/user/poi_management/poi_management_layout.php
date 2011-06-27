@@ -16,8 +16,8 @@ $session = new SessionHandler();
         $query1 = "SELECT userid FROM " . $database->t_poiuser . " WHERE name='" . $session->name . "'";
         $result1 = $database->execQuery($query1);
         $row = mysql_fetch_array($result1);
-        //$query2 = "SELECT title FROM " . $database->t_poi . " WHERE userid=" . $row['userid'];
-        $query2 = "SELECT title FROM " . $database->t_poi . " WHERE userid=0";
+        $query2 = "SELECT title FROM " . $database->t_poi . " WHERE userid=" . $row['userid'];
+        //$query2 = "SELECT title FROM " . $database->t_poi . " WHERE userid=0";
         $result2 = $database->execQuery($query2);
         $idx = 0;
         while ($row2 = mysql_fetch_array($result2)) {
@@ -79,8 +79,8 @@ $session = new SessionHandler();
             <label>POI : </label>
             <select id="poiname" name="poiname">
                 <?php
-                //$query2 = "SELECT title FROM " . $database->t_poi . " WHERE userid=" . $row['userid'];
-                $query3 = "SELECT title FROM " . $database->t_poi . " WHERE userid=0";
+                $query2 = "SELECT title FROM " . $database->t_poi . " WHERE userid=" . $row['userid'];
+                //$query3 = "SELECT title FROM " . $database->t_poi . " WHERE userid=0";
                 $result3 = $database->execQuery($query2);
                 while ($row3 = mysql_fetch_array($result3)) {
                     ?>
