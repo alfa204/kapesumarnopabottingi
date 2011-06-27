@@ -61,6 +61,17 @@ $session = new SessionHandler();
             <input type="text" id="tagline" name="tagline">
         </div>
         <div class="item">
+            <label> Deskripsi :</label>
+            <textarea id="deskripsi" name="deskripsi" cols="20" rows="3"></textarea>
+        </div>
+        <div class="item">
+            <label> Kategori :</label>
+            <select id="kategori" name="kategori">
+                <option value="1">Wisata</option>
+                <option value="2">Penginapan</option>
+            </select>
+        </div>
+        <div class="item">
             <label>Latitude :</label>
             <input type="text" id="lat" name="lat">
         </div>
