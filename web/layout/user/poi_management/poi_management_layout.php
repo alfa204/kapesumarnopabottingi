@@ -52,7 +52,7 @@ $session = new SessionHandler();
     </table>
 </div>
 <div class="content">
-    <form action="process/addpoi.php" method="POST">
+    <form action="process/user_addpoi.php" method="POST">
         <div class="item">
             <label>Title :</label>
             <input type="text" id="title" name="title">
@@ -68,10 +68,6 @@ $session = new SessionHandler();
         <div class="item">
             <label> Longitude :</label>
             <input type="text" id="lon" name="lon">
-        </div>
-        <div class="item">
-            <label>Image URL :</label>
-            <input type="text" id="imageurl" name="imageurl">
         </div>
         <div class="item">
             <input type="submit" value="Add New POI">
