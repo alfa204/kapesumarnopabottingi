@@ -56,7 +56,7 @@ and open the template in the editor.
                 </div>
                 <div class="item">
                     <label>Password :</label>
-                    <input type="text" id="password" name="password">
+                    <input type="password" id="password" name="password">
                 </div>
                 <div class="item">
                     <label> Konfirm Password :</label>
