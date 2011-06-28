@@ -5,7 +5,7 @@ and open the template in the editor.
 -->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <div class="container">
-    <div class="content" style="width: 628px; height: 500px; border-style: solid">
+    <div class="content" style="width: 628px; height: 536px; border-style: solid">
         <div class="content" style="border-style: solid">
             <div class="content">
                 <button onclick="buttonOnClick('layout/general_layout/homecontent_layout.php','ajax_wrapper')">HOME</button>
@@ -28,8 +28,8 @@ and open the template in the editor.
             </div>
         </div>
     </div>
-    <div class="content" style="width: 200px; height: 500px; border-style: solid">
-        <div id="content" style="border-style: solid">
+    <div class="content" style="width: 200px; border-style: solid">
+        <div class="content" style="border-style: solid">
             <form action="process/login.php" method="POST">
                 <div class="item">
                     <label style="">Username :</label>
@@ -44,7 +44,7 @@ and open the template in the editor.
                 </div>
             </form>
         </div>
-        <div id="content" style="border-style: solid">
+        <div class="content" style="border-style: solid">
             <form action="process/registration.php" method="POST">
                 <div class="item">
                     <label>Name :</label>

@@ -11,14 +11,13 @@ $session = new SessionHandler();
             <th>POI TITLE</th>
             <th></th>
             <th></th>
-            <th></th>
         </tr>
         <?php
         $query1 = "SELECT userid FROM " . $database->t_poiuser . " WHERE name='" . $session->name . "'";
         $result1 = $database->execQuery($query1);
         $row = mysql_fetch_array($result1);
-        $query2 = "SELECT title FROM " . $database->t_poi . " WHERE userid=" . $row['userid'];
-        //$query2 = "SELECT title FROM " . $database->t_poi . " WHERE userid=0";
+        //$query2 = "SELECT title FROM " . $database->t_poi . " WHERE userid=" . $row['userid'];
+        $query2 = "SELECT * FROM " . $database->t_poi . " WHERE userid=0";
         $result2 = $database->execQuery($query2);
         $idx = 0;
         while ($row2 = mysql_fetch_array($result2)) {
@@ -27,12 +26,12 @@ $session = new SessionHandler();
             <tr>
                 <td>
                     <div>
-                        <?php echo $idx ?>
+                        <?php echo $idx; ?>
                     </div>
                 </td>
                 <td>
                     <div>
-                        <?php echo $row2['title'] ?>
+                        <?php echo $row2['title']; ?>
                     </div>
                 </td>
                 <td>
@@ -45,13 +44,32 @@ $session = new SessionHandler();
                         <button>Delete</button>
                     </div>
                 </td>
+            </tr>
+            <?php
+                $query3 = "SELECT * FROM " . $database->t_dynamictext . " WHERE poi_id='" . $row2['id'] . "'";
+                $result3 = $database->execQuery($query3);
+                while ($row3 = mysql_fetch_array($result3)) {
+                    ?>
+            <tr>
+                <td></td>
                 <td>
                     <div>
-                        <button>Show Tagline</button>
+                        <?php echo $row3['text']; ?>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <?php echo $row3['start_date']; ?>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <?php echo $row3['end_date']; ?>
                     </div>
                 </td>
             </tr>
             <?php
+                }
         }
         ?>
     </table>
@@ -62,8 +80,8 @@ $session = new SessionHandler();
             <label>POI : </label>
             <select id="poiname" name="poiname">
                 <?php
-                $query2 = "SELECT title FROM " . $database->t_poi . " WHERE userid=" . $row['userid'];
-                //$query3 = "SELECT title FROM " . $database->t_poi . " WHERE userid=0";
+                //$query2 = "SELECT title FROM " . $database->t_poi . " WHERE userid=" . $row['userid'];
+                $query3 = "SELECT title FROM " . $database->t_poi . " WHERE userid=0";
                 $result3 = $database->execQuery($query2);
                 while ($row3 = mysql_fetch_array($result3)) {
                     ?>
