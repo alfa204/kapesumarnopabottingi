@@ -10,8 +10,8 @@ To change this template, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<div class="container" style="border-style: solid">
-    <div class="content" style="width: 865px; border-style: solid">
+<div class="container">
+    <div class="content" style="width: 865px;">
         <div class="content">
             <button onclick="buttonOnClick('layout/general_layout/homecontent_layout.php','ajax_wrapper')">HOME</button>
         </div>
@@ -48,8 +48,7 @@ and open the template in the editor.
             </form>
         </div>
     </div>
-    <div class="content" style="width: 865px; border-style: solid">
-        ini isinya, pake ajax?
+    <div class="content" style="width: 865px">
         <div id="ajax_wrapper">
             
         </div>

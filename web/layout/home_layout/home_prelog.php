@@ -5,8 +5,8 @@ and open the template in the editor.
 -->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <div class="container">
-    <div class="content" style="width: 628px; height: 536px; border-style: solid">
-        <div class="content" style="border-style: solid">
+    <div class="content" style="width: 628px; height: 536px">
+        <div class="content">
             <div class="content">
                 <button onclick="buttonOnClick('layout/general_layout/homecontent_layout.php','ajax_wrapper')">HOME</button>
             </div>
@@ -21,15 +21,13 @@ and open the template in the editor.
             </div>
         </div>
         <div class="clearboth"></div>
-        <div class="content" id="menucontent" style="border-style: solid">
-            isinya, pake ajax?
+        <div class="content">
             <div id="ajax_wrapper">
-                
             </div>
         </div>
     </div>
-    <div class="content" style="width: 200px; border-style: solid">
-        <div class="content" style="border-style: solid">
+    <div class="content" style="width: 200px">
+        <div class="content">
             <form action="process/login.php" method="POST">
                 <div class="item">
                     <label style="">Username :</label>
@@ -44,7 +42,7 @@ and open the template in the editor.
                 </div>
             </form>
         </div>
-        <div class="content" style="border-style: solid">
+        <div class="content">
             <form action="process/registration.php" method="POST">
                 <div class="item">
                     <label>Name :</label>
