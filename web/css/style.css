@@ -54,3 +54,8 @@ button {
     font-weight: bold;
     text-align: center;
 }
+
+button:hover{
+    background-color: teal;
+    border: 1px solid teal;
+}
