@@ -23,6 +23,7 @@ root {
     width: 900px;
     margin-left: auto;
     margin-right: auto;
+    background-color: rgb(51,185,185);
 }
 
 .content {
