@@ -10,12 +10,10 @@ class DatabaseHandler {
     public $sqlSelectedConn;
     public $sqlSelectedDB;
     // nama tabel yang akan digenerate
-    public $t_dynamictext   = 'dynamictext_table';
-    public $t_object        = 'object_table';
-    public $t_poiapproval   = 'poiapproval_table';
     public $t_poiuser       = 'poiuser_table';
     public $t_poi           = 'poi_table';
-    public $t_transform     = 'transform_table';
+    public $t_tagline       = 'tagline_table';
+    public $t_waktutayang   = 'waktutayang_table';
     
     // METHOD
     // konstruktor

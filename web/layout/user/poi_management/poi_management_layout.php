@@ -18,7 +18,7 @@ $session = new SessionHandler();
             $result1 = $database->execQuery($query1);
             $row = mysql_fetch_array($result1);
             //$query2 = "SELECT title FROM " . $database->t_poi . " WHERE userid=" . $row['userid'];
-            $query2 = "SELECT * FROM " . $database->t_poi . " WHERE userid=0";
+            $query2 = "SELECT * FROM " . $database->t_poi . " WHERE userid=3";
             $result2 = $database->execQuery($query2);
             $idx = 0;
             while ($row2 = mysql_fetch_array($result2)) {
@@ -47,7 +47,7 @@ $session = new SessionHandler();
                     </td>
                 </tr>
                 <?php
-                $query3 = "SELECT * FROM " . $database->t_dynamictext . " WHERE poi_id='" . $row2['id'] . "'";
+                $query3 = "SELECT * FROM " . $database->t_tagline . " WHERE poi_id='" . $row2['id'] . "'";
                 $result3 = $database->execQuery($query3);
                 $row3 = mysql_fetch_array($result3);
                 if ($row3) {
