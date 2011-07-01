@@ -27,8 +27,8 @@ $dbpass = 'root123';
   // $sql is returned as a PDO statement object. 
   $sql_actions = $db->prepare( "
   			SELECT deskripsi
-    		FROM poi_table
-			WHERE poi_table.id=:poiID" );
+    		FROM poilayar_table
+			WHERE poilayar_table.id=:poiID" );
 	// Binds the named parameter markers ":id" to the specified parameter values "$poiID".							   
   $sql_actions->bindParam( ':poiID', $poiID, PDO::PARAM_INT );
   

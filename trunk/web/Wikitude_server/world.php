@@ -177,7 +177,7 @@ function GetInfoDetails($poiID, $db) {
 function GetThumbnail($db, $poiID) {
 	$sql_actions = $db->prepare( " SELECT baseURL, 
   										icon_wiki
-    						   	 FROM object_table
+    						   	 FROM poilayar_table
     						     WHERE poiID = :id " ); 
 								 
 	// Binds the named parameter markers ":id" to the specified parameter values "$poi['id']".							   
@@ -246,7 +246,7 @@ function Gethotspots( $db, $value ) {
 						   cos((:long  - lon) * pi() / 180))
 						  ) * 180 / pi()) * 60 * 1.1515 * 1.609344 * 1000) as distance,
 				deskripsi
-				FROM poi_table
+				FROM poilayar_table
 				HAVING distance < :radius
 				ORDER BY distance ASC
 				LIMIT 0, :max " );
@@ -268,7 +268,7 @@ function Gethotspots( $db, $value ) {
 						   cos((:long  - lon) * pi() / 180))
 						  ) * 180 / pi()) * 60 * 1.1515 * 1.609344 * 1000) as distance,
 						deskripsi
-				FROM poi_table
+				FROM poilayar_table
 				WHERE (attribution like '%:searchterm%' or title like like '%:searchterm%' or line4 like '%:searchterm%' or line3 like '%:searchterm%' or line2 like '%:searchterm%')
 				HAVING distance < :radius
 				ORDER BY distance ASC
