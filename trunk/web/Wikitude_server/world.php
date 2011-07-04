@@ -177,7 +177,7 @@ function GetInfoDetails($poiID, $db) {
 function GetThumbnail($db, $poiID) {
 	$sql_actions = $db->prepare( " SELECT baseURL, 
   										icon_wiki
-    						   	 FROM poilayar_table
+    						   	 FROM object_table
     						     WHERE poiID = :id " ); 
 								 
 	// Binds the named parameter markers ":id" to the specified parameter values "$poi['id']".							   

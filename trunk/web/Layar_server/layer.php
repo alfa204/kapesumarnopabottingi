@@ -345,8 +345,8 @@ function Getobject( $poi, $db ) {
   // A new table called "OBJECT_Table" is created to store object related parameters, namely "baseURL", "full", "reduced", "icon" and "size". 
   // "poiID" which shows the POI id that this object belongs to. 
   // The SQL statement returns object which has the same poiID as the id of $poi ($poi['id']).
-  $sql_object = $db->prepare( " SELECT baseURL, full, reduced, imageicon, size 
-    						   	 FROM poilayar_table
+  $sql_object = $db->prepare( " SELECT baseURL, full, reduced, icon, size 
+    						   	 FROM object_table
     						     WHERE poiID = :id 
     						     LIMIT 0,1 " ); 
     						     
@@ -396,7 +396,7 @@ function Gettransform( $poi, $db ) {
   // "poiID" which shows the POI id that this transform belongs to. 
   // The SQL statement returns transform which has the same poiID as the id of $poi ($poi['id']).
   $sql_transform = $db->prepare( " SELECT rel, angle, scale
-    						   	 FROM poilayar_table
+    						   	 FROM transform_table
     						     WHERE poiID = :id 
     						     LIMIT 0,1 " ); 
     						     
@@ -480,8 +480,8 @@ $yesterday = strtotime( $mysqldateyesterday );
 
 
 //SELECT semua data dari dynamictext yang udah diapprove dan start datenya sama ma hari ini
-$querySelectStartDate = "SELECT * FROM ".$db->t_tagline." WHERE isapproved=1 AND  start_date=".$today."";
-$querySelectEndDate = "SELECT * FROM ".$db->t_tagline." WHERE isapproved=1 AND  end_date=".$yesterday."";
+$querySelectStartDate = "SELECT * FROM ".$db->t_tagline." WHERE tagline_status_id=2 AND  start_date=".$today."";
+$querySelectEndDate = "SELECT * FROM ".$db->t_tagline." WHERE tagline_status_id=2 AND  end_date=".$yesterday."";
 
 //Exec Query
 $resultStart = $db->execQuery($querySelectStartDate);
@@ -491,7 +491,7 @@ $resultEnd = $db->execQuery($querySelectEndDate);
 while ($rowStart = mysql_fetch_array($resultStart, MYSQL_ASSOC)) {
     $text = $rowStart['text'];
     $poi_id = $rowStart['poi_id'];
-    $queryUpdateStart = "UPDATE ".$db->t_poi."
+    $queryUpdateStart = "UPDATE ".$db->t_poilayar."
                 SET
                     attribution='$text'
                 WHERE
@@ -504,7 +504,7 @@ while ($rowStart = mysql_fetch_array($resultStart, MYSQL_ASSOC)) {
 while ($rowEnd = mysql_fetch_array($resultEnd, MYSQL_ASSOC)) {
     $text = "";
     $poi_id = $rowEnd['poi_id'];
-    $queryUpdateStart = "UPDATE ".$db->t_poi."
+    $queryUpdateStart = "UPDATE ".$db->t_poilayar."
                 SET
                     attribution='$text'
                 WHERE

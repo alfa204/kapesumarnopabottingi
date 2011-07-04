@@ -23,7 +23,7 @@
         username,
         password,
         email,
-        statusAdmin
+        status_admin
     ) VALUES (
         '".$name."',
         '".$username."',
