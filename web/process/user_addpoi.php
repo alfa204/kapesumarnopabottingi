@@ -5,15 +5,14 @@
     $session = new SessionHandler();
     
     // Get userid dari active user
-    $query = "SELECT userid FROM ".$database->t_poiuser." WHERE name='".$session->name."'";
+    $query = "SELECT id FROM ".$database->t_poiuser." WHERE name='".$session->name."'";
     $result = $database->execQuery($query);
     while ($row = mysql_fetch_array($result)) {
-        $userid = $row['userid'];
+        $userid = $row['id'];
     }
     
     // Get informasi dari form
     $title = $_POST['title'];
-    $tagline = $_POST['tagline'];
     $address = $_POST['address'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
@@ -27,9 +26,12 @@
     $deskripsi = $_POST['deskripsi'];
     $kategori = $_POST['kategori'];
     
+    // Set default poi status
+    $poi_status = 1; /* 1=pending */
+    
     $query =
-    "INSERT INTO ".$database->t_poiapproval."(
-        userid,
+    "INSERT INTO ".$database->t_poi."(
+        user_id,
         title,
         lat,
         lon,
@@ -43,7 +45,8 @@
         image_icon,
         image_wiki,
         deskripsi,
-        kategori
+        kategori,
+        poi_status_id
     ) VALUES (
         '".$userid."',
         '".$title."',
@@ -59,7 +62,8 @@
         '".$imageicon."',
         '".$imagewiki."',
         '".$deskripsi."',
-        '".$kategori."'
+        '".$kategori."',
+        '".$poi_status."'
     )";
     
     if ($database->execQuery($query)) {

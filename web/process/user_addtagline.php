@@ -9,7 +9,7 @@
     $tagline = $_POST['tagline'];
     $awal = $_POST['awal'];
     $akhir = $_POST['akhir'];
-    $isapproved = 0;
+    $tagline_status = 1;
     
     // Get poi_id
     $query = "SELECT id FROM ".$database->t_poi." WHERE title='".$poiname."'";
@@ -19,18 +19,18 @@
     }
     
     $query =
-    "INSERT INTO ".$database->t_dynamictext."(
+    "INSERT INTO ".$database->t_tagline."(
         poi_id,
         text,
         start_date,
         end_date,
-        isapproved
+        tagline_status_id
     ) VALUES (
         '".$poiid."',
         '".$tagline."',
         '".$awal."',
         '".$akhir."',
-        '".$isapproved."'
+        '".$tagline_status."'
     )";
     
     if ($database->execQuery($query)) {

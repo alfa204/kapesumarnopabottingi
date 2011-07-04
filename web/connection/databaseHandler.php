@@ -10,8 +10,9 @@ class DatabaseHandler {
     public $sqlSelectedConn;
     public $sqlSelectedDB;
     // nama tabel yang akan digenerate
-    public $t_poiuser       = 'poiuser_table';
+    public $t_poiuser       = 'user_table';
     public $t_poi           = 'poi_table';
+    public $t_poilayar      = 'poilayar_table';
     public $t_tagline       = 'tagline_table';
     public $t_waktutayang   = 'waktutayang_table';
     
