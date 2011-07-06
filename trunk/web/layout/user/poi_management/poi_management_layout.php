@@ -58,7 +58,7 @@ $session = new SessionHandler();
         <div class="item">
             <label>(*) means required</label>
         </div>
-        <form action="process/user_addpoi.php" method="POST">
+        <form action="process/user/addpoi.php" method="POST">
             <table>
                 <tr>
                     <td>

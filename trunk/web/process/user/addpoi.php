@@ -1,6 +1,6 @@
 <?php
-    include_once '../connection/databaseHandler.php';
-    include_once '../connection/sessionHandler.php';
+    include_once '../../connection/databaseHandler.php';
+    include_once '../../connection/sessionHandler.php';
     $database = new DatabaseHandler();
     $session = new SessionHandler();
     

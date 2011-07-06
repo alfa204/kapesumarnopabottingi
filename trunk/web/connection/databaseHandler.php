@@ -14,7 +14,7 @@ class DatabaseHandler {
     public $t_poi           = 'poi_table';
     public $t_poilayar      = 'poilayar_table';
     public $t_tagline       = 'tagline_table';
-    public $t_taglinestatus = 'tagline_status_table';
+    public $t_taglinestatus = 'tagline_status';
     public $t_waktutayang   = 'waktutayang_table';
     
     // METHOD
