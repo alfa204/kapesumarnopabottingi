@@ -17,8 +17,8 @@ $session = new SessionHandler();
             $query1 = "SELECT id FROM " . $database->t_poiuser . " WHERE name='" . $session->name . "'";
             $result1 = $database->execQuery($query1);
             $row = mysql_fetch_array($result1);
-            //$query2 = "SELECT title FROM " . $database->t_poi . " WHERE user_id=" . $row['id'];
-            $query2 = "SELECT * FROM " . $database->t_poi . " WHERE user_id=3";
+            $query2 = "SELECT title FROM " . $database->t_poi . " WHERE user_id=" . $row['id'];
+            //$query2 = "SELECT * FROM " . $database->t_poi . " WHERE user_id=3";
             $result2 = $database->execQuery($query2);
             $idx = 0;
             while ($row2 = mysql_fetch_array($result2)) {
