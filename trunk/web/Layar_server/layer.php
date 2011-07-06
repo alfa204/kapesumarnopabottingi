@@ -467,7 +467,7 @@ catch(Exception $e) {
 //------------------------------------------------------------------------------
 /* Update database saat ada Http request ke sini */
 //------------------------------------------------------------------------------
-include_once '../../connection/databaseHandler.php';
+include_once '../connection/databaseHandler.php';
 $db = new DatabaseHandler();
 $today = getdate();
 $yesterday = mktime(0,0,0,date("m"),date("d")-1,date("Y"));
