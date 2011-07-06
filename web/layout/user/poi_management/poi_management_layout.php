@@ -55,12 +55,15 @@ $session = new SessionHandler();
         <div class="item">
             <label style="font-weight: bolder">CREATE NEW POI</label>
         </div>
+        <div class="item">
+            <label>(*) means required</label>
+        </div>
         <form action="process/user_addpoi.php" method="POST">
             <table>
                 <tr>
                     <td>
                         <div class="item">
-                            <label>Title :</label>
+                            <label>Title (*) :</label>
                         </div>
                     </td>
                     <td>
@@ -72,7 +75,7 @@ $session = new SessionHandler();
                 <tr>
                     <td>
                         <div class="item">
-                            <label> Description :</label>
+                            <label>Description :</label>
                         </div>
                     </td>
                     <td>
@@ -84,7 +87,7 @@ $session = new SessionHandler();
                 <tr>
                     <td>
                         <div class="item">
-                            <label> Category :</label>
+                            <label>Category :</label>
                         </div>
                     </td>
                     <td>
@@ -99,7 +102,7 @@ $session = new SessionHandler();
                 <tr>
                     <td>
                         <div class="item">
-                            <label>Latitude :</label>
+                            <label>Latitude (*) :</label>
                         </div>
                     </td>
                     <td>
@@ -111,7 +114,7 @@ $session = new SessionHandler();
                 <tr>
                     <td>
                         <div class="item">
-                            <label> Longitude :</label>
+                            <label>Longitude (*) :</label>
                         </div>
                     </td>
                     <td>
@@ -123,7 +126,7 @@ $session = new SessionHandler();
                 <tr>
                     <td>
                         <div class="item">
-                            <label> Address :</label>
+                            <label>Address :</label>
                         </div>
                     </td>
                     <td>
@@ -135,7 +138,7 @@ $session = new SessionHandler();
                 <tr>
                     <td>
                         <div class="item">
-                            <label> Phone :</label>
+                            <label>Phone :</label>
                         </div>
                     </td>
                     <td>
@@ -147,7 +150,7 @@ $session = new SessionHandler();
                 <tr>
                     <td>
                         <div class="item">
-                            <label> Email :</label>
+                            <label>Email :</label>
                         </div>
                     </td>
                     <td>
@@ -159,7 +162,7 @@ $session = new SessionHandler();
                 <tr>
                     <td>
                         <div class="item">
-                            <label> Image URL :</label>
+                            <label>Image URL :</label>
                         </div>
                     </td>
                     <td>
@@ -171,7 +174,7 @@ $session = new SessionHandler();
                 <tr>
                     <td>
                         <div class="item">
-                            <label> Image Full (256x256) :</label>
+                            <label>Image Full (256x256) (*) :</label>
                         </div>
                     </td>
                     <td>
@@ -183,7 +186,7 @@ $session = new SessionHandler();
                 <tr>
                     <td>
                         <div class="item">
-                            <label> Image Reduced (128x128) :</label>
+                            <label>Image Reduced (128x128) :</label>
                         </div>
                     </td>
                     <td>
@@ -195,7 +198,7 @@ $session = new SessionHandler();
                 <tr>
                     <td>
                         <div class="item">
-                            <label> Image Icon (32x32) :</label>
+                            <label>Image Icon (32x32) :</label>
                         </div>
                     </td>
                     <td>
@@ -207,13 +210,56 @@ $session = new SessionHandler();
                 <tr>
                     <td>
                         <div class="item">
-                            <label> Image Wiki (64x64) :</label>
+                            <label>Image Wiki (64x64) :</label>
                         </div>
                     </td>
                     <td>
                         <div class="item">
                             <input type="file" id="imagewiki" name="imagewiki">
                         </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-style: solid" colspan="2">
+                        <table>
+                            <caption>POI Publishing Time</caption>
+                            <tr>
+                                <td>
+                                    <div class="item">
+                                        <label>Label (*) :</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="item">
+                                        <input type="text" id="label" name="label">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="item">
+                                        <label>Publishing Date (Start) (*) :</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="item">
+                                        <input type="text" id="start" name="start">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="item">
+                                        <label>Publishing Date (End) (*) :</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="item">
+                                        <input type="text" id="end" name="end">
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
                 <tr>

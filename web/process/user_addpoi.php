@@ -39,7 +39,6 @@
         address,
         phone,
         email,
-        tagline,
         image_full,
         image_reduced,
         image_icon,
@@ -56,7 +55,6 @@
         '".$address."',
         '".$phone."',
         '".$email."',
-        '".$tagline."',
         '".$imagefull."',
         '".$imagereduced."',
         '".$imageicon."',
@@ -67,7 +65,34 @@
     )";
     
     if ($database->execQuery($query)) {
-        header("location:../index.php?ref=addPoiSuccess");
+        //header("location:../index.php?ref=addPoiSuccess");
+        $used_id = mysql_insert_id();
+        $label = $_POST['label'];
+        $start = $_POST['start'];
+        $end = $_POST['end'];
+        
+        $query2 =
+        "INSERT INTO ".$database->t_waktutayang." (
+            poi_id,
+            label,
+            start_date,
+            end_date
+        ) VALUES (
+            '".$used_id."',
+            '".$label."',
+            '".$start."',
+            '".$end."'
+        )";
+        
+        if ($database->execQuery($query2)) {
+            //header("location:../index.php?ref=addPoiSuccess");
+            echo "add waktu tayang success";
+        } else {
+            //header("location:../index.php?ref=addPoiFailed");
+            //die();
+            echo "add waktu tayang failed";
+            echo mysql_error();
+        }
     }
     else {
         header("location:../index.php?ref=addPoiFailed");
