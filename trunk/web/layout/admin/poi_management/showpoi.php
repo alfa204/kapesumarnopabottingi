@@ -6,6 +6,7 @@ $param = $_GET['param'];
 
 if ($param == "all") {
     $query = "SELECT title FROM " . $database->t_poi;
+    $poistatus = 0;
 } else {
     $query1 = "SELECT id FROM " . $database->t_poistatus . " WHERE label='" . $param . "'";
     $result1 = $database->execQuery($query1);
