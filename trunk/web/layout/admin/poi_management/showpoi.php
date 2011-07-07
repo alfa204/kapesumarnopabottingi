@@ -18,44 +18,45 @@ if ($param == "all") {
 $result = $database->execQuery($query);
 $i = 0;
 ?>
-<div class="content">
-    <table>
-        <caption>POI LIST : <?php echo $param; ?></caption>
-        <tr>
-            <th>NO</th>
-            <th>TITLE</th>
-            <th></th>
-            <th></th>
-        </tr>
-        <?php
-        while ($row = mysql_fetch_array($result)) {
-            $i++;
-            ?>
+<div id="detailcontent">
+    <div class="content">
+        <table>
+            <caption>POI LIST : <?php echo $param; ?></caption>
             <tr>
-                <td>
-                    <div>
-                        <?php echo $i; ?>
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        <?php echo $row['title']; ?>
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        <button>Details</button>
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        <button>Delete</button>
-                    </div>
-                </td>
+                <th>NO</th>
+                <th>TITLE</th>
+                <th></th>
+                <th></th>
             </tr>
             <?php
-        }
-        ?>
-    </table>
+            while ($row = mysql_fetch_array($result)) {
+                $i++;
+                ?>
+                <tr>
+                    <td>
+                        <div>
+                            <?php echo $i; ?>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <?php echo $row['title']; ?>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <button onclick="buttonOnClick('layout/admin/poi_management/poi_detail.php?poiname=<?php echo $row['title']; ?>','detailcontent')">Details</button>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <button>Delete</button>
+                        </div>
+                    </td>
+                </tr>
+                <?php
+            }
+            ?>
+        </table>
+    </div>
 </div>
-
