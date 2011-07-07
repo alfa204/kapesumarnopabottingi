@@ -6,7 +6,6 @@
         $query1 = "SELECT id FROM ".$database->t_poistatus." WHERE label='".$action."'";
         $result1 = $database->execQuery($query1);
         $row1 = mysql_fetch_array($result1);
-        echo $query1;
         $queryUpdate = "UPDATE ".$database->t_poi."
                     SET
                         poi_status_id=".$row1['id']."
