@@ -87,18 +87,6 @@ $row = mysql_fetch_array($result);
             <tr>
                 <td>
                     <div class="item">
-                        <label>Address :</label>
-                    </div>
-                </td>
-                <td>
-                    <div class="item">
-                        <input type="text" id="address" name="address" value="<?php echo $row['address']; ?>"/>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="item">
                         <label>Category :</label>
                     </div>
                 </td>
