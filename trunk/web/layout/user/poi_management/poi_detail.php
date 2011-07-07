@@ -45,6 +45,16 @@ while ($row = mysql_fetch_array($result)) {
             <div class="item">
                 <label>Email : <?php echo $row['email']; ?></label><br/>
             </div>
+            <?php
+            if ($row['poi_status_id'] != 1) {
+                ?>
+            <div class="item">
+                <button onclick="buttonOnClick('layout/user/poi_management/poi_edit.php?poiname=<?php echo $row['title']; ?>','editcontent')">EDIT</button>
+            </div>
+            <?php
+            }
+            ?>
+            <br/><br/>
             <div class="item">
                 <table>
                     <caption>Publishing Time</caption>
