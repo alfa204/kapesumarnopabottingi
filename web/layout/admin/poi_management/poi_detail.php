@@ -44,6 +44,24 @@ while ($row = mysql_fetch_array($result)) {
                 <label>Email : <?php echo $row['email']; ?></label><br/>
             </div>
             <div class="item">
+                <label>Status : <?php
+                $query1 = "SELECT label FROM ".$database->t_poistatus." WHERE id=".$row['poi_status_id'];
+                $result1 = $database->execQuery($query1);
+                $row1 = mysql_fetch_array($result1);
+                echo $row1['label'];
+                ?></label><br/>
+            </div>
+            <?php
+            if ($row['poi_status_id']==1 || $row['poi_status_id']==5) {
+                ?>
+            <div class="item">
+                <button>APPROVE</button>
+            </div>
+            <?php
+            }
+            ?>
+            <br/><br/>
+            <div class="item">
                 <table>
                     <caption>Publishing Time</caption>
                     <tr>
