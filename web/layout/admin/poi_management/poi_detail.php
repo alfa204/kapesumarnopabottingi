@@ -59,6 +59,12 @@ while ($row = mysql_fetch_array($result)) {
                 <button  onclick="buttonOnClick('process/admin_poirequest.php?param=<?php echo $row['id'];?>&action=rejected','is_approved')">REJECT</button>
             </div>
             <?php
+            } else if ($row['poi_status_id']==6) {
+                ?>
+                <div id="is_approved" class="item">
+                    <button  onclick="buttonOnClick('process/admin_poirequest.php?param=<?php echo $row['id'];?>&action=approved','is_approved')">APPROVE</button>
+                </div>
+            <?php
             }
             ?>
             <br/><br/>
