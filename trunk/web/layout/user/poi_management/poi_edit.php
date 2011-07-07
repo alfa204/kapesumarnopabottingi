@@ -105,12 +105,18 @@ $row = mysql_fetch_array($result);
                 <td>
                     <div class="item">
                         <select id="kategori" name="kategori">
-                            <option value="1" <?php if ($row['kategori'] == '1') {
+                            <option value="1" <?php
+if ($row['kategori'] == '1') {
     echo "SELECTED";
-} ?>>Wisata</option>
-                            <option value="2" <?php if ($row['kategori'] == '2') {
+}
+?>
+                                    >Wisata</option>
+                            <option value="2" <?php
+if ($row['kategori'] == '2') {
     echo "SELECTED";
-} ?>>Penginapan</option>
+}
+?>
+                                    >Penginapan</option>
                         </select>
                     </div>
                 </td>
