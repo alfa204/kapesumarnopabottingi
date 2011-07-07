@@ -5,13 +5,14 @@ $database = new DatabaseHandler();
 $session = new SessionHandler();
 
 $poiname = $_GET['poiname'];
-
-// Get informasi dari database
-$query = "SELECT * FROM " . $database->t_poi . " WHERE title='" . $poiname . "'";
-$result = $database->execQuery($query);
-while ($row = mysql_fetch_array($result)) {
-    ?>
-    <div id="editcontent">
+?>
+<div id="editcontent">
+    <?php
+    // Get informasi dari database
+    $query = "SELECT * FROM " . $database->t_poi . " WHERE title='" . $poiname . "'";
+    $result = $database->execQuery($query);
+    while ($row = mysql_fetch_array($result)) {
+        ?>
         <div class="content">
             <div class="item">
                 <label>Title : <?php echo $row['title']; ?></label><br/>
@@ -48,10 +49,10 @@ while ($row = mysql_fetch_array($result)) {
             <?php
             if ($row['poi_status_id'] != 1) {
                 ?>
-            <div class="item">
-                <button onclick="buttonOnClick('layout/user/poi_management/poi_edit.php?poiname=<?php echo $row['title']; ?>','editcontent')">EDIT</button>
-            </div>
-            <?php
+                <div class="item">
+                    <button onclick="buttonOnClick('layout/user/poi_management/poi_edit.php?poiname=<?php echo $row['title']; ?>','editcontent')">EDIT</button>
+                </div>
+                <?php
             }
             ?>
             <br/><br/>
