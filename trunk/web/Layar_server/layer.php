@@ -465,7 +465,16 @@ catch(Exception $e) {
 }
 
 //------------------------------------------------------------------------------
-/* Update database saat ada Http request ke sini */
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+/* DAEMON DAEMON FUFUFUFU
+ * DAEMON DAEMON FUFUFUFU
+ * DAEMON DAEMON DAEMONNNNNNNNNN
+ * 
+ * CRON JOB disini 
+ */
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 include_once '../connection/databaseHandler.php';
 $db = new DatabaseHandler();
@@ -478,8 +487,171 @@ $mysqldateyesterday = date( 'Y-m-d H:i:s', $yesterday );
 $today = strtotime( $mysqldatetoday );
 $yesterday = strtotime( $mysqldateyesterday );
 
+// Cek yang Approved atau UnPublished di POI TABLE
+// Kalo approved/unpublished , cek di tabel waktu tayang :
+// 1. Kalo start    : 1. Di POI Table, record itu diubah dari Approved jadi Published
+//                    2. Insert record itu ke POI_Layar
+// 2. Kalo between  : Update semua informasi dari POI_Table ke ke POI Layar dengan POI_id yg bersangkutan
+$queryApprovedAndUnpublished = "SELECT * FROM".$db->t_poi." WHERE poi_status_id=2 OR poi_status_id=4";
 
-//SELECT semua data dari dynamictext yang udah diapprove dan start datenya sama ma hari ini
+//Eksekusi query:
+$resultApprovedAndUnpublished = $db->execQuery($queryApprovedAndUnpublished);
+while ($rowResultApprovedAndUnpublished = mysql_fetch_array($resultApprovedAndUnpublished, MYSQL_ASSOC)) {
+    //Untuk setiap row ini, cek waktu tayang :
+    $queryWaktuTayang = "SELECT * FROM ".$db->t_waktutayang." WHERE poi_id = ".$rowResultApprovedAndUnpublished['id']."";
+    //Exec Query :
+    $resultWaktuTayang = $db->execQuery($queryWaktuTayang);
+    while ($rowResultWaktuTayang = mysql_fetch_array($resultWaktuTayang, MYSQL_ASSOC)) {
+        if ($today==$rowResultWaktuTayang['start_date']) {
+            //Insert ke POI Layar:
+            $queryInsert = "INSERT INTO ".$db->t_poilayar."(
+                            poi_id,
+                            user_id,
+                            attribution,
+                            title,
+                            lat,
+                            lon,
+                            imageURL,
+                            line4,
+                            line3,
+                            line2,
+                            type,
+                            dimension,
+                            alt,
+                            relativeAlt,
+                            distance,
+                            inFocus,
+                            doNotIndex,
+                            showSmallBiw,
+                            showBiwOnClick,
+                            kategori,
+                            deskripsi
+                        ) VALUES (
+                            '".$rowResultApprovedAndUnpublished['id']."',
+                            '".$rowResultApprovedAndUnpublished['user_id']."',
+                            'Ini ngambil dari tabel tagline',
+                            '".$rowResultApprovedAndUnpublished['title']."',
+                            '".$rowResultApprovedAndUnpublished['lat']."',
+                            '".$rowResultApprovedAndUnpublished['lon']."',
+                            '".$rowResultApprovedAndUnpublished['imageURL']."',
+                            '".$rowResultApprovedAndUnpublished['email']."',
+                            '".$rowResultApprovedAndUnpublished['phone']."',
+                            '".$rowResultApprovedAndUnpublished['address']."',
+                            0,
+                            1,
+                            ,
+                            ,
+                            0.0000000000,
+                            0,
+                            0,
+                            1,
+                            1,
+                            '".$rowResultApprovedAndUnpublished['kategori']."',
+                            '".$rowResultApprovedAndUnpublished['deskripsi']."',
+                        )";
+            //Exec queryInsert :
+            $db->execQuery($queryInsert);
+            
+            //Update POI_Table row ini statusnya jadi Published (3)
+            $queryUpdate = "UPDATE ".$db->t_poi." 
+                            SET poi_status_id = 3
+                            WHERE id = ".$rowResultApprovedAndUnpublished['id']."";
+           
+            //Exec Update :
+            $db->execQuery($queryUpdate);
+            
+        } else if ($rowResultApprovedAndUnpublished['start_date']<$today && $today<$rowResultApprovedAndUnpublished['end_date']){
+            //between
+            //Update semua informasi dari poi_table dengan poi_id yang bersangkutan
+             $queryUpdate = "UPDATE ".$db->t_poilayar." 
+                            SET 
+                                attribution     = 'Ini ngambil dari tabel tagline',,
+                                imageURL        = '".$rowResultApprovedAndUnpublished['imageURL']."',
+                                line4           = '".$rowResultApprovedAndUnpublished['email']."',
+                                line3           = '".$rowResultApprovedAndUnpublished['phone']."',
+                                line2           = '".$rowResultApprovedAndUnpublished['address']."',
+                                kategori        = '".$rowResultApprovedAndUnpublished['kategori']."',
+                                deskripsi       = '".$rowResultApprovedAndUnpublished['deskripsi']."'
+                            WHERE 
+                                poi_id = ".$rowResultApprovedAndUnpublished['id']."";
+             //Exec query :
+             $db->execQuery($queryUpdate);
+        }
+    }
+    
+}
+
+
+// Cek yang Published di  Poi Table
+// Kalo Published,  Cek waktu tayang_table
+// 1. Kalo end : 1. Delete record dengan poi_id itu di tabel POI_Layar
+//               2. Di POI_Table record itu diubah jadi Unpublished
+//               3. Delete record di table waktu_tayang dengan poi_id bersangkutan
+$queryPublished = "SELECT * FROM".$db->t_poi." WHERE poi_status_id=3";
+
+//Eksekusi query : 
+$resultPublished = $db->execQuery($queryPublished);
+while ($rowResultPublished = mysql_fetch_array($resultPublished, MYSQL_ASSOC)) {
+    //Untuk setiap row ini, cek waktu tayang :
+    $queryWaktuTayang = "SELECT * FROM ".$db->t_waktutayang." WHERE poi_id = ".$rowResultPublished['id']."";
+    //Exec Query :
+    $resultWaktuTayang = $db->execQuery($queryWaktuTayang);
+    while ($rowResultWaktuTayang = mysql_fetch_array($resultWaktuTayang, MYSQL_ASSOC)) {
+        if ($today==$rowResultWaktuTayang['end_date']) {
+            //Delete dari POI Layar:
+            $queryDelete = "DELETE 
+                            FROM ".$db->t_poilayar."
+                            WHERE poi_id = ".$rowResultPublished['id']."";
+            //Exec queryDelete :
+            $db->execQuery($queryDelete);
+            
+            //Update POI_Table row ini statusnya jadi UnPublished (3)
+            $queryUpdate = "UPDATE ".$db->t_poi." 
+                            SET poi_status_id = 4
+                            WHERE id = ".$rowResultPublished['id']."";
+           
+            //Exec Update :
+            $db->execQuery($queryUpdate);
+            
+            //Delete record di tabel waktu tayang dengan poi_id bersangkutan :
+            $queryDeleteWaktuTayang = "DELETE 
+                                       FROM ".$db->t_waktutayang."
+                                       WHERE poi_id = ".$rowResultPublished['id']."";
+            //Exec queryDelete :
+            $db->execQuery($queryDeleteWaktuTayang);
+            
+        } 
+    }
+}
+
+
+// Cek yang Rejected di Poi table 
+// Kalo rejected, cek waktutayang_table
+// 1. Kalo end : dekete di 
+$queryRejected = "SELECT * FROM".$db->t_poi." WHERE poi_status_id=6";
+
+//Eksekusi query :
+$resultRejected = $db->execQuery($queryRejected);
+while ($rowResultRejected = mysql_fetch_array($resultRejected, MYSQL_ASSOC)) {
+    //Untuk setiap row ini, cek waktu tayang :
+    $queryWaktuTayang = "SELECT * FROM ".$db->t_waktutayang." WHERE poi_id = ".$rowResultRejected['id']."";
+    //Exec Query :
+    $resultWaktuTayang = $db->execQuery($queryWaktuTayang);
+    while ($rowResultWaktuTayang = mysql_fetch_array($resultWaktuTayang, MYSQL_ASSOC)) {
+        if ($today==$rowResultWaktuTayang['end_date']) {
+            //Delete dari POI Layar:
+            $queryDelete = "DELETE 
+                            FROM ".$db->t_poilayar."
+                            WHERE poi_id = ".$rowResultRejected['id']."";
+            //Exec queryDelete :
+            $db->execQuery($queryDelete);
+        } 
+    }
+}
+
+
+
+/* //SELECT semua data dari dynamictext yang udah diapprove dan start datenya sama ma hari ini
 $querySelectStartDate = "SELECT * FROM ".$db->t_tagline." WHERE tagline_status_id=2 AND  start_date=".$today."";
 $querySelectEndDate = "SELECT * FROM ".$db->t_tagline." WHERE tagline_status_id=2 AND  end_date=".$yesterday."";
 
@@ -510,10 +682,22 @@ while ($rowEnd = mysql_fetch_array($resultEnd, MYSQL_ASSOC)) {
                 WHERE
                     id = '$poi_id'";
     $db->execQuery($queryUpdateStart);
-}
+} */
 
 //------------------------------------------------------------------------------
-/* End of kedodolan */
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+/**
+ * END OF DAEMON
+ * 
+ * DAEMON PENSIUN
+ * DAEMON UDAH LULUS
+ * DAEMON DIPECAT
+ * 
+ * END OF KEDODOLAN
+ */
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 
 
