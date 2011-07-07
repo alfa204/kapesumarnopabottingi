@@ -54,8 +54,9 @@ while ($row = mysql_fetch_array($result)) {
             <?php
             if ($row['poi_status_id']==1 || $row['poi_status_id']==5) {
                 ?>
-            <div class="item">
-                <button>APPROVE</button>
+            <div id="is_approved" class="item">
+                <button  onclick="buttonOnClick('process/admin_poirequest.php?param=<?php echo $row['id'];?>&action=approved','is_approved')">APPROVE</button>
+                <button  onclick="buttonOnClick('process/admin_poirequest.php?param=<?php echo $row['id'];?>&action=rejected','is_approved')">REJECT</button>
             </div>
             <?php
             }
