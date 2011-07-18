@@ -1,5 +1,5 @@
 <?php
-    include_once '../connection/databaseHandler.php';
+    include_once '../../connection/databaseHandler.php';
     
         $poi_id = $_GET['param'];
         $action = $_GET['action'];

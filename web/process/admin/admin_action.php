@@ -1,5 +1,5 @@
 <?php
-    include_once '../connection/databaseHandler.php';
+    include_once '../../connection/databaseHandler.php';
     
     $database = new DatabaseHandler();
     // get all label status poi

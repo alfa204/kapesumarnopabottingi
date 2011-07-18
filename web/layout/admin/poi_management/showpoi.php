@@ -24,12 +24,16 @@ while ($row2 = mysql_fetch_array($result2)) {
 }
 
 $result = $database->execQuery($query);
+if (mysql_num_rows($result)!=0)
+    $ada = true;
+else
+    $ada = false;
 $i = 0;
 ?>
 <div id="detailcontent">
     <div class="content">
         POI LIST : <?php echo $param; ?><br/>
-        <?php if (mysql_num_rows($result)!=0) { ?>
+        <?php if ($ada) { ?>
         <table>
             <tr>
                 <th>NO</th>
@@ -91,6 +95,7 @@ $i = 0;
 <div class="clearboth">
 </div>
 <div id="with_check">
+    <?php if ($ada) { ?>
     <a href="javascript:check_all(true)">Check All</a> / <a href="javascript:check_all(false)">Uncheck All</a> 
     With Selected : 
     <select name="status" onchange="javascript:change_status()">
@@ -103,4 +108,5 @@ $i = 0;
         <option value="unpublished">Unpublished</option>
     </select>
     <a href="javascript:delete_poi()">Delete</a>
+    <?php } ?>
 </div>

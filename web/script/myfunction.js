@@ -53,7 +53,7 @@ function action_poi(act, data) {
             type: 'POST',
             data: form_data,
             success: function(msg) {
-               
+               buttonOnClick('layout/admin/poi_management/poi_management_layout.php','ajax_wrapper');
             }
     });
 }
