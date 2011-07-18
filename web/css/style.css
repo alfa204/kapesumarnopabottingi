@@ -59,3 +59,7 @@ button:hover{
     background-color: teal;
     border: 1px solid teal;
 }
+
+.nav_poi {
+    float:left;
+}

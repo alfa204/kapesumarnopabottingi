@@ -1,5 +1,6 @@
 <?php
     include_once '../connection/databaseHandler.php';
+    
         $poi_id = $_GET['param'];
         $action = $_GET['action'];
         $database = new DatabaseHandler();
@@ -12,5 +13,5 @@
                     WHERE
                         id = '$poi_id'";
         $database->execQuery($queryUpdate);
-    echo ucfirst($action);
+    
 ?>

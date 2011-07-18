@@ -55,14 +55,14 @@ while ($row = mysql_fetch_array($result)) {
             if ($row['poi_status_id']==1 || $row['poi_status_id']==5) {
                 ?>
             <div id="is_approved" class="item">
-                <button  onclick="buttonOnClick('process/admin_poirequest.php?param=<?php echo $row['id'];?>&action=approved','is_approved')">APPROVE</button>
-                <button  onclick="buttonOnClick('process/admin_poirequest.php?param=<?php echo $row['id'];?>&action=rejected','is_approved')">REJECT</button>
+                <button  onclick="buttonOnClick('process/admin/admin_poirequest.php?param=<?php echo $row['id'];?>&action=approved','is_approved')">APPROVE</button>
+                <button  onclick="buttonOnClick('process/admin/admin_poirequest.php?param=<?php echo $row['id'];?>&action=rejected','is_approved')">REJECT</button>
             </div>
             <?php
             } else if ($row['poi_status_id']==6) {
                 ?>
                 <div id="is_approved" class="item">
-                    <button  onclick="buttonOnClick('process/admin_poirequest.php?param=<?php echo $row['id'];?>&action=approved','is_approved')">APPROVE</button>
+                    <button  onclick="buttonOnClick('process/admin/admin_poirequest.php?param=<?php echo $row['id'];?>&action=approved','is_approved')">APPROVE</button>
                 </div>
             <?php
             }
@@ -155,7 +155,7 @@ while ($row = mysql_fetch_array($result)) {
                         <tr>
                             <td>
                                 <div class="item">
-                                    <label>Start Date :</label>
+                                    <label>Start Date:</label>
                                 </div>
                             </td>
                             <td>
@@ -167,7 +167,7 @@ while ($row = mysql_fetch_array($result)) {
                         <tr>
                             <td>
                                 <div class="item">
-                                    <label>End Date :</label>
+                                    <label>End Date:</label>
                                 </div>
                             </td>
                             <td>
