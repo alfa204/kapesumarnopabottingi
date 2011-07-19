@@ -45,14 +45,14 @@ while ($row = mysql_fetch_array($result)) {
             </div>
             <div class="item">
                 <label>Status : <?php
-                $query1 = "SELECT label FROM ".$database->t_poistatus." WHERE id=".$row['poi_status_id'];
+                $query1 = "SELECT label FROM " . $database->t_poistatus . " WHERE id=" . $row['poi_status_id'];
                 $result1 = $database->execQuery($query1);
                 $row1 = mysql_fetch_array($result1);
                 echo $row1['label'];
-                ?></label><br/>
+                    ?></label><br/>
             </div>
             <div class="item">
-                <select name="status" onchange="javascript:change_status('<?php echo $row['id'];?>')">
+                <select name="status" onchange="javascript:change_status('<?php echo $row['id']; ?>')">
                     <option value="change"> - Change Status - </option>
                     <option value="approved">Approved</option>
                     <option value="rejected">Rejected</option>
@@ -61,17 +61,22 @@ while ($row = mysql_fetch_array($result)) {
                     <option value="published">Published</option>
                     <option value="unpublished">Unpublished</option>
                 </select>
-                <a href="javascript:delete_poi('<?php echo $row['id'];?>')">Delete</a>
+                <a href="javascript:delete_poi('<?php echo $row['id']; ?>')">Delete</a>
             </div>
             <br/><br/>
+        </div>
+        <div class="clearboth"></div>
+        <div class="content">
             <div class="item">
                 <table>
-                    <caption>Publishing Time</caption>
+                    <caption><strong>Publishing Time</strong></caption>
                     <tr>
                         <th>NO</th>
                         <th>LABEL</th>
                         <th>START DATE</th>
                         <th>END DATE</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                     <?php
                     $i = 0;
@@ -86,21 +91,27 @@ while ($row = mysql_fetch_array($result)) {
                             <td><?php echo $row2['label']; ?></td>
                             <td><?php echo $row2['start_date']; ?></td>
                             <td><?php echo $row2['end_date']; ?></td>
+                            <td><a href="">Edit</a></td>
+                            <td><a href="">Delete</a></td>
                         </tr>
                         <?php
                     }
                     ?>
                 </table>
             </div>
+            <br/>
             <div class="item">
                 <table>
-                    <caption>Tagline</caption>
+                    <caption><strong>Tagline</strong></caption>
                     <tr>
                         <th>NO</th>
+                        <th></th>
                         <th>TEXT</th>
                         <th>START DATE</th>
                         <th>END DATE</th>
                         <th>STATUS</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                     <?php
                     $i = 0;
@@ -112,6 +123,9 @@ while ($row = mysql_fetch_array($result)) {
                         ?>
                         <tr>
                             <td><?php echo $i; ?></td>
+                            <td>
+                                <input type="checkbox" name="checklist_tagline" value="<?php echo $row3['id']; ?>" />
+                            </td>
                             <td><?php echo $row3['text']; ?></td>
                             <td><?php echo $row3[start_date]; ?></td>
                             <td><?php echo $row3[end_date]; ?></td>
@@ -120,17 +134,33 @@ while ($row = mysql_fetch_array($result)) {
                                 $query4 = "SELECT label FROM " . $database->t_taglinestatus . " WHERE id=" . $row3['tagline_status_id'];
                                 $result4 = $database->execQuery($query4);
                                 while ($row4 = mysql_fetch_array($result4)) {
+                                    echo "<div id='status_tagline_".$row3['id']."'>";
                                     echo $row4['label'];
+                                    echo "</div>";
                                 }
                                 ?>
                             </td>
+                            <td><a href="">Edit</a></td>
                         </tr>
                         <?php
                     }
                     ?>
                 </table>
             </div>
+            <div class="item">
+                <a href="javascript:check_all('checklist_tagline', true)">Check All</a> / <a href="javascript:check_all('checklist_tagline', false)">Uncheck All</a>
+                With Selected : 
+                <select name="status_tagline" onchange="javascript:change_status_tagline()">
+                    <option value="change"> - Change Status - </option>
+                    <option value="approved">Approved</option>
+                    <option value="rejected">Rejected</option>
+                    <option value="pending">Pending</option>
+                    <option value="edited">Edited</option>
+                </select>
+                <a href="javascript:delete_tagline()">Delete</a>
+            </div>
         </div>
+        <div class="clearboth"></div>
         <div class="content">
             <div class="content">
                 <form action="process/user/addtagline.php?poi_id=<?php echo $row['id']; ?>" method="POST">
@@ -183,7 +213,6 @@ while ($row = mysql_fetch_array($result)) {
                     </table>
                 </form>
             </div>
-            <div class="clearboth"></div>
             <div class="content">
                 <form action="process/user/addpublishingtime.php?poi_id=<?php echo $row['id']; ?>" method="POST">
                     <table>
