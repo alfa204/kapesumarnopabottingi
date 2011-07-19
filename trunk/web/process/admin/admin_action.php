@@ -30,6 +30,44 @@
                             WHERE
                                 id = '$id'";
             $database->execQuery($queryDelete);
+            // delete waktu tayang
+            $queryDelete = "DELETE FROM ".$database->t_waktutayang."
+                            WHERE
+                                poi_id = '$id'";
+            $database->execQuery($queryDelete);
+            // delete tagline
+            $queryDelete = "DELETE FROM ".$database->t_tagline."
+                            WHERE
+                                poi_id = '$id'";
+            $database->execQuery($queryDelete);
+            
+            // search poi di poilayar table
+            $querySearch = "SELECT id FROM ".$database->t_poilayar." WHERE poi_id = '$id'";
+            $result3 = $database->execQuery($querySearch);
+            if (mysql_num_rows($result3) != 0) {
+                $row0 = mysql_fetch_array($result3);
+                $poi_id_layar = $row0['id'];
+                // delete dari tabel poi layar
+                $queryDelete = "DELETE FROM ".$database->t_poilayar."
+                                WHERE
+                                    poi_id = '$id'";
+                $database->execQuery($queryDelete);
+                // delete dari action tabel
+                $queryDelete = "DELETE FROM ".$database->t_action."
+                                WHERE
+                                    poiID = '$id'";
+                $database->execQuery($queryDelete);
+                // delete dari object tabel
+                $queryDelete = "DELETE FROM ".$database->t_object."
+                                WHERE
+                                    poiID = '$id'";
+                $database->execQuery($queryDelete);
+                // delete dari transform tabel
+                $queryDelete = "DELETE FROM ".$database->t_transform."
+                                WHERE
+                                    poiID = '$id'";
+                $database->execQuery($queryDelete);
+            }
         endforeach;
     }
 ?>

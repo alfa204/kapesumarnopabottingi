@@ -15,27 +15,37 @@ function getCheckedList() {
     return arr;
 }
 
-function change_status() {
-    var checked = getCheckedList();
+function change_status(val) {
+    var checked = new Array();
+    if (val==undefined) {
+        checked = getCheckedList();
+    } else {
+        checked = new Array(val);
+    }
     if (checked.length==0) {
         alert('No checked');
     } else {
         var value = $('select[name=status]').val();
         if (value!='change') {
-            if(confirm('Are you sure to change status to '+value+' all checked?')) {
+            if(confirm('Are you sure to change status to '+value+' selected POI?')) {
                 action_poi(value, checked);
             }
-            changeDefaultSelection();
         }
     }
+    changeDefaultSelection();
 }
 
-function delete_poi() {
-    var checked = getCheckedList();
+function delete_poi(val) {
+    var checked = new Array();
+    if (val==undefined) {
+        checked = getCheckedList();
+    } else {
+        checked = new Array(val);
+    }
     if (checked.length==0) {
         alert('No checked');
     } else {
-        if(confirm('Are you sure to change status to delete all checked?')) {
+        if(confirm('Are you sure to change status to delete selected POI?')) {
             action_poi('delete', checked);
         }
     }
