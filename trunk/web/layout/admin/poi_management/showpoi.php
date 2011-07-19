@@ -67,7 +67,7 @@ $i = 0;
                     </td>
                     <?php if ($param == "all") { ?>
                     <td>
-                        <div>
+                        <div id="status_poi_<?php echo $row['id'];?>">
                             <?php echo $label_status[$row['poi_status_id']-1];?>
                         </div>
                     </td>
@@ -96,7 +96,7 @@ $i = 0;
 </div>
 <div id="with_check">
     <?php if ($ada) { ?>
-    <a href="javascript:check_all(true)">Check All</a> / <a href="javascript:check_all(false)">Uncheck All</a> 
+    <a href="javascript:check_all('checklist', true)">Check All</a> / <a href="javascript:check_all('checklist', false)">Uncheck All</a> 
     With Selected : 
     <select name="status" onchange="javascript:change_status()">
         <option value="change"> - Change Status - </option>
