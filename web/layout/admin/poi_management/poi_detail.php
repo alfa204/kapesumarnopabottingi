@@ -51,22 +51,18 @@ while ($row = mysql_fetch_array($result)) {
                 echo $row1['label'];
                 ?></label><br/>
             </div>
-            <?php
-            if ($row['poi_status_id']==1 || $row['poi_status_id']==5) {
-            ?>
-            <div id="is_approved" class="item">
-                <button  onclick="buttonOnClick('process/admin/admin_poirequest.php?param=<?php echo $row['id'];?>&action=approved','is_approved')">APPROVE</button>
-                <button  onclick="buttonOnClick('process/admin/admin_poirequest.php?param=<?php echo $row['id'];?>&action=rejected','is_approved')">REJECT</button>
+            <div class="item">
+                <select name="status" onchange="javascript:change_status('<?php echo $row['id'];?>')">
+                    <option value="change"> - Change Status - </option>
+                    <option value="approved">Approved</option>
+                    <option value="rejected">Rejected</option>
+                    <option value="pending">Pending</option>
+                    <option value="edited">Edited</option>
+                    <option value="published">Published</option>
+                    <option value="unpublished">Unpublished</option>
+                </select>
+                <a href="javascript:delete_poi('<?php echo $row['id'];?>')">Delete</a>
             </div>
-            <?php
-            } else if ($row['poi_status_id']==6) {
-                ?>
-                <div id="is_approved" class="item">
-                    <button  onclick="buttonOnClick('process/admin/admin_poirequest.php?param=<?php echo $row['id'];?>&action=approved','is_approved')">APPROVE</button>
-                </div>
-            <?php
-            }
-            ?>
             <br/><br/>
             <div class="item">
                 <table>

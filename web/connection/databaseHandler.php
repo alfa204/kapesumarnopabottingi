@@ -17,6 +17,9 @@ class DatabaseHandler {
     public $t_tagline       = 'tagline_table';
     public $t_taglinestatus = 'tagline_status';
     public $t_waktutayang   = 'waktutayang_table';
+    public $t_action   = 'action_table';
+    public $t_object   = 'object_table';
+    public $t_transform   = 'transform_table';
     
     // METHOD
     // konstruktor
