@@ -14,19 +14,21 @@ and open the template in the editor.
         <script type="text/javascript" src="script/AJAX.js"></script>
         <script type="text/javascript" src="script/jquery/jquery-1.6.2.min.js"></script>
         <script type="text/javascript" src="script/myfunction.js"></script>
-        <title></title>
+        <title>LGSAR</title>
     </head>
     <body>
-        <?php
-        // put your code here
-        include 'layout/general_layout/header.php';
+        <div class="maincontent">
+            <?php
+            // put your code here
+            include 'layout/general_layout/header.php';
 
-        if ($session->isLoggedIn) {
-            include 'layout/home_layout/home_content.php';
-        } else {
-            include 'layout/home_layout/home_prelog.php';
-        }
-        include 'layout/general_layout/footer.php';
-        ?>
+            if ($session->isLoggedIn) {
+                include 'layout/home_layout/home_content.php';
+            } else {
+                include 'layout/home_layout/home_prelog.php';
+            }
+            include 'layout/general_layout/footer.php';
+            ?>
+        </div>
     </body>
 </html>
