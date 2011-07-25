@@ -1,31 +1,49 @@
 <?php
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+include_once '../../../connection/databaseHandler.php';
+include_once '../../../connection/sessionHandler.php';
+$database = new DatabaseHandler();
+$session = new SessionHandler();
 
+$queryDetailUser = "SELECT * FROM " . $database->t_poiuser . " WHERE username='" . $session->username . "'";
+$resultDetailUser = $database->execQuery($queryDetailUser);
+$row = mysql_fetch_array($resultDetailUser);
+$name = $row['name'];
+$username = $row['username'];
+$email = $row['email'];
+$password = $row['password'];
 ?>
-<label>
-    Name :
-</label>
-<input type="text">
 
-<div class="clearboth"></div>
+<form action="process/user/setting.php" method="POST">
+    <table border="1"> 
+        <tr>
+            <td> Name : </td>
+            <td> <input type="text" name="name" value="<?php echo $name ?>"></td>
+        </tr>
 
-<label>
-    Username :
-</label>
-<input type="text" disabled="disabled">
+        <tr>
+            <td> Username : </td>
+            <td> <input type="text" name="username"  disabled="disabled"  value="<?php echo $username ?>">  </td>
+        </tr>
 
-<div class="clearboth"></div>
+        <tr>
+            <td> Email :</td>
+            <td> <input type="text" name="email" value="<?php echo $email ?>">  </td>
+        </tr>
 
-<label>
-    Email :
-</label>
-<input type="text">
+        <tr>
+            <td> Password :</td>
+            <td> <input type="password" name="password" value="<?php echo $password ?>">  </td>
+        </tr>
 
-<div class="clearboth"></div>
+        <tr>
+            <td> Retype Password :</td>
+            <td> <input type="password" name="repassword" value="<?php echo $password ?>">  </td>
+        </tr>
 
-<label>
-    Password :
-</label>
+        <tr>
+            <td></td>
+            <td> <input type="submit" value="Edit Profile!">  </td>
+        </tr>
+    </table>
+
+</form>
