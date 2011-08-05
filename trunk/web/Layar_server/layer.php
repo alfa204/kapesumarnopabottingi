@@ -655,7 +655,7 @@ if (is_bool($resultRejected)) {
 
 
 
-/* //SELECT semua data dari dynamictext yang udah diapprove dan start datenya sama ma hari ini
+ //SELECT semua data dari dynamictext yang udah diapprove dan start datenya sama ma hari ini
   $querySelectStartDate = "SELECT * FROM ".$db->t_tagline." WHERE tagline_status_id=2 AND  start_date=".$today."";
   $querySelectEndDate = "SELECT * FROM ".$db->t_tagline." WHERE tagline_status_id=2 AND  end_date=".$yesterday."";
 
@@ -686,7 +686,7 @@ if (is_bool($resultRejected)) {
   WHERE
   id = '$poi_id'";
   $db->execQuery($queryUpdateStart);
-  } */
+  } 
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
