@@ -10,4 +10,6 @@
 6. Tabel Kategori di POI + sinkron di setting Layer : Danang
 7. Dokumen kelengkapan fungsional LGSAR : Danang
 
+//Deadline : Minggu, 21 Agustus 
+
 
