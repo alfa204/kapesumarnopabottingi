@@ -1,0 +1,13 @@
+=====SANUR=============
+1. Dokumen kelengkapan fungsional SANUR : Akbar
+
+=====LGSAR=============
+1. Tes Semua cronjob : Akbar
+2. CronJob Wikitude : Akbar
+3. Google Maps View - front end web : Pudy
+4. App yang pake Wikitude : Pudy
+5. Tes Wikitude : Barengan
+6. Tabel Kategori di POI + sinkron di setting Layer : Danang
+7. Dokumen kelengkapan fungsional LGSAR : Danang
+
+
