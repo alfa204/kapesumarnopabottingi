@@ -54,11 +54,9 @@
                 </td>
                 <td>
                     <div class="item">
-                        <div id="map_canvas" style="width: 500px; height: 300px; border-style: groove">
-                            ini map
-                            <script type="text/javascript">
-                                loadmap();
-                            </script>
+                        <button onclick="loadmap()">Load Map</button>
+                        <div id="map_canvas" style="border-style: groove">
+                            Press "Load Map" Button
                         </div>
 <!--                        <input type="text" id="lat" name="lat">-->
                     </div>
