@@ -1,6 +1,6 @@
 <?php
-    include_once 'connection/sessionHandler.php';
-    $session = new SessionHandler();
+include_once 'connection/sessionHandler.php';
+$session = new SessionHandler();
 ?>
 <!--
 To change this template, choose Tools | Templates
@@ -14,6 +14,8 @@ and open the template in the editor.
         <script type="text/javascript" src="script/AJAX.js"></script>
         <script type="text/javascript" src="script/jquery/jquery-1.6.2.min.js"></script>
         <script type="text/javascript" src="script/myfunction.js"></script>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript" src="script/map.js"></script>
         <title>LGSAR</title>
     </head>
     <body>
