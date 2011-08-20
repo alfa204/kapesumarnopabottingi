@@ -58,4 +58,54 @@ Username:	testin75_root
 Password:	root123
 
 
+///////////////////////////////////////////////////////////
+Account Manager:
+You're hosted on ueuo.com server. Account Manager is located at http://ueuo.freewebhostingarea.com/.
+Username: ujicobasp.freevar.com
+Password: danangtri20
+If you have accounts created on more than one server, see http://www.freewebhostingarea.com/members/.
+ 
+Some scripts require server path. Yours is /home/vhosts/ujicobasp.freevar.com.
+Your Personal FTP Information:
+FTP Server/Host:
+
+ueuo.com
+
+FTP Login/Username:
+
+ujicobasp.freevar.com
+
+FTP PassWord:
+
+danangtri20
+
+To upload your files go to our Web based FTP client (recommended), located at http://ueuo.freewebhostingarea.com/ftp/.
+
+Once logged in, you will be able to create a new dir, new file, to upload a zip archive and have it unzipped automatically, to edit your files, to select files and download them as .zip, to copy, move, delete, rename, chmod (change permissions), search anything under your account, ability to see and edit dot files like .htaccess. With a normal ftp program you will not be able to do this.
+For a complete list of features see http://ueuo.freewebhostingarea.com/ftp/help.html.
+MySQL database Information:
+You will get a limited number of free databases per account. But you can create other accounts and get as many free databases as you want.
+ATTENTION!!! MySQL databases must be activated @ Account Manager >> Hit Create DB button.
+MySQL HostName is localhost only. We don't allow external connections.
+phpMyAdmin is located at http://ueuo.freewebhostingarea.com/pma/. Log in using MySQL username.
+PhpMyAdmin (PMA) is a tool that will help you to administer your database. You don't have privileges to create a database with PMA because, as said before, databases must be created @ Account Manager using Create DB button.
+Database details (db name, username) will be provided at Account Manager once you create the database.
+
+Other features at Account Manager
+One click Autoinstaller for PhpBB3, SMF, WordPress, Joomla, Drupal (with Clean URLs preenabled), Moodle.
+One click database backup & One click database import
+Manage DB button (available after you create a database) >> then choose Backup DB or Import DB buttons
+Configure PHP
+you can turn on/off Register Globals, Magic Quotes gpc, Allow_url_include variables.
+safe_mode is automatically turned off few hours after account creation.
+Reset Account
+useful if you want to delete all files/databases under your account.
+Fix Ownership
+some files are created with apache permissions (e.g. unpack an archive, php scripts) and you're not able to edit/delete them. This feature will fix permissions and you will be able to manipulate all files under your account.
+
+
+MySQL Main Database name: 447194 
+MySQL Database username: 447194 
+MySQL Database password: equal with account password 
+MySQL Database host: localhost 
 
