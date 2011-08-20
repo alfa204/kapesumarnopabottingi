@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 20, 2011 at 05:06 PM
+-- Generation Time: Aug 20, 2011 at 05:16 PM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1
 
@@ -25,6 +25,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Table structure for table `action_table`
 --
 
+DROP TABLE IF EXISTS `action_table`;
 CREATE TABLE IF NOT EXISTS `action_table` (
   `poiID` varchar(255) NOT NULL,
   `label` varchar(30) NOT NULL,
@@ -56,6 +57,7 @@ INSERT INTO `action_table` (`poiID`, `label`, `uri`, `autoTriggerRange`, `autoTr
 -- Table structure for table `kategori_poi`
 --
 
+DROP TABLE IF EXISTS `kategori_poi`;
 CREATE TABLE IF NOT EXISTS `kategori_poi` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kategori` varchar(255) NOT NULL,
@@ -80,6 +82,7 @@ INSERT INTO `kategori_poi` (`id`, `kategori`) VALUES
 -- Table structure for table `object_table`
 --
 
+DROP TABLE IF EXISTS `object_table`;
 CREATE TABLE IF NOT EXISTS `object_table` (
   `ID` int(10) NOT NULL AUTO_INCREMENT,
   `poiID` varchar(255) NOT NULL,
@@ -105,6 +108,7 @@ INSERT INTO `object_table` (`ID`, `poiID`, `baseURL`, `full`, `reduced`, `icon`,
 -- Table structure for table `poilayar_table`
 --
 
+DROP TABLE IF EXISTS `poilayar_table`;
 CREATE TABLE IF NOT EXISTS `poilayar_table` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `poi_id` int(11) NOT NULL,
@@ -153,6 +157,7 @@ INSERT INTO `poilayar_table` (`id`, `poi_id`, `userid`, `attribution`, `title`, 
 -- Table structure for table `poi_status`
 --
 
+DROP TABLE IF EXISTS `poi_status`;
 CREATE TABLE IF NOT EXISTS `poi_status` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(255) NOT NULL,
@@ -177,6 +182,7 @@ INSERT INTO `poi_status` (`id`, `label`) VALUES
 -- Table structure for table `poi_table`
 --
 
+DROP TABLE IF EXISTS `poi_table`;
 CREATE TABLE IF NOT EXISTS `poi_table` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -212,6 +218,7 @@ INSERT INTO `poi_table` (`id`, `user_id`, `title`, `lat`, `lon`, `imageURL`, `ad
 -- Table structure for table `tagline_status`
 --
 
+DROP TABLE IF EXISTS `tagline_status`;
 CREATE TABLE IF NOT EXISTS `tagline_status` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(255) NOT NULL,
@@ -233,6 +240,7 @@ INSERT INTO `tagline_status` (`id`, `label`) VALUES
 -- Table structure for table `tagline_table`
 --
 
+DROP TABLE IF EXISTS `tagline_table`;
 CREATE TABLE IF NOT EXISTS `tagline_table` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `poi_id` int(11) NOT NULL,
@@ -257,6 +265,7 @@ INSERT INTO `tagline_table` (`id`, `poi_id`, `text`, `start_date`, `end_date`, `
 -- Table structure for table `transform_table`
 --
 
+DROP TABLE IF EXISTS `transform_table`;
 CREATE TABLE IF NOT EXISTS `transform_table` (
   `ID` int(10) NOT NULL AUTO_INCREMENT,
   `poiID` varchar(255) NOT NULL,
@@ -279,6 +288,7 @@ INSERT INTO `transform_table` (`ID`, `poiID`, `rel`, `angle`, `scale`) VALUES
 -- Table structure for table `user_table`
 --
 
+DROP TABLE IF EXISTS `user_table`;
 CREATE TABLE IF NOT EXISTS `user_table` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(150) NOT NULL,
@@ -305,6 +315,7 @@ INSERT INTO `user_table` (`id`, `name`, `username`, `password`, `email`, `status
 -- Table structure for table `waktutayang_table`
 --
 
+DROP TABLE IF EXISTS `waktutayang_table`;
 CREATE TABLE IF NOT EXISTS `waktutayang_table` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `poi_id` int(11) NOT NULL,

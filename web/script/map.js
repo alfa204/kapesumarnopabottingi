@@ -3,10 +3,6 @@ var markersArray = [];
 var count = 0;
 var listInfoMarker = [];    //ada title, latitude, longitude
 
-function tes() {
-    alert("tes");
-}
-
 function loadmap() {
     var latlng = new google.maps.LatLng(-6.166092,106.833369);
     var mapOptions = {
@@ -17,10 +13,12 @@ function loadmap() {
     map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
     
     //buat addMarker, kalo mouse click di map
-/*    google.maps.event.addListener(map, 'click', function(event) {
-        count++;
-        addMarker('marker-'+count, event.latLng, true);
-    });*/
+    google.maps.event.addListener(map, 'click', function(event) {
+        if (markersArray.length>0) {
+            deleteOverlays();
+        }
+        addMarker('my location', event.latLng, true);
+    });
 }
 
 /*
