@@ -20,6 +20,7 @@ class DatabaseHandler {
     public $t_action   = 'action_table';
     public $t_object   = 'object_table';
     public $t_transform   = 'transform_table';
+    public $t_kategori   = 'kategori_poi';
     
     // METHOD
     // konstruktor

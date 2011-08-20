@@ -93,8 +93,15 @@ $session = new SessionHandler();
                     <td>
                         <div class="item">
                             <select id="kategori" name="kategori">
-                                <option value="1">Wisata</option>
-                                <option value="2">Penginapan</option>
+                                <?php 
+                                    $query_kategori = "SELECT * FROM " . $database->t_kategori;
+                                    $result_kategori = $database->execQuery($query_kategori);
+                                    while ($row_kategori = mysql_fetch_array($result_kategori)) {
+                                        ?>
+                                            <option value="<?php echo $row_kategori['id']; ?>"><?php echo $row_kategori['kategori']; ?></option>
+                                        <?php
+                                    }
+                                ?>
                             </select>
                         </div>
                     </td>
