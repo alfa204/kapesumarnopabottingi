@@ -28,7 +28,7 @@
                 </td>
                 <td>
                     <div class="item">
-                        <textarea id="deskripsi" name="deskripsi" cols="16" rows="3"></textarea>
+                        <textarea id="deskripsi" name="deskripsi" cols="20" rows="5"></textarea>
                     </div>
                 </td>
             </tr>
@@ -55,36 +55,13 @@
                 </td>
                 <td>
                     <div class="item">
+                        Select location on the map
                         <div id="map_canvas" style="border-style: groove">
                             Press "Load Map" Button Above
                         </div>
+                        or input directly the location coordinate (latitude-longitude)
                         <br/>
-                        <input type="text" id="lat_hidden" name="lat_hidden">
-                        <input type="text" id="lon_hidden" name="lon_hidden">
-<!--                        <input type="text" id="lat" name="lat">-->
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="item">
-                        <label>Latitude (*) :</label>
-                    </div>
-                </td>
-                <td>
-                    <div class="item">
                         <input type="text" id="lat" name="lat">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="item">
-                        <label>Longitude (*) :</label>
-                    </div>
-                </td>
-                <td>
-                    <div class="item">
                         <input type="text" id="lon" name="lon">
                     </div>
                 </td>
