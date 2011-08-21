@@ -1,4 +1,5 @@
 <div class="content" style="padding-left: 10px; border-style: solid">
+    <button onclick="loadmap()">Load Map</button>
     <div class="item">
         <label style="font-weight: bolder">CREATE NEW POI</label>
     </div>
@@ -54,10 +55,12 @@
                 </td>
                 <td>
                     <div class="item">
-                        <button onclick="loadmap()">Load Map</button>
                         <div id="map_canvas" style="border-style: groove">
-                            Press "Load Map" Button
+                            Press "Load Map" Button Above
                         </div>
+                        <br/>
+                        <input type="text" id="lat_hidden" name="lat_hidden">
+                        <input type="text" id="lon_hidden" name="lon_hidden">
 <!--                        <input type="text" id="lat" name="lat">-->
                     </div>
                 </td>

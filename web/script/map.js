@@ -39,6 +39,7 @@ function addMarker(title, location, draggable) {
         var name = marker.getTitle();
         var position = marker.getPosition();
         updateInfoMarker(name, position);
+        sendLocation();
     });
     markersArray.push(marker);
     
@@ -48,7 +49,9 @@ function addMarker(title, location, draggable) {
     latlngStr = latlngStr.split(",", 2);
     var lat = parseFloat(latlngStr[0]);
     var lng = parseFloat(latlngStr[1]);
+    
     addListInfoMarker(title, lat, lng);
+    sendLocation();
 }
 
 /*
@@ -88,24 +91,6 @@ function deleteOverlays() {
     deleteListInfoMarker();
 }
 
-function downloadUrl(url, callback) {
-    var request = window.ActiveXObject ?
-    new ActiveXObject('Microsoft.XMLHTTP') :
-    new XMLHttpRequest;
-
-    request.onreadystatechange = function() {
-        if (request.readyState == 4) {
-            request.onreadystatechange = doNothing;
-            callback(request, request.status);
-        }
-    };
-
-    request.open('GET', url, true);
-    request.send(null);
-}
-
-function doNothing() {}
-
 function saveMarkers() {
     form = document.getElementById('saveForm');
     var hidden = null;
@@ -131,7 +116,6 @@ function deleteListInfoMarker() {
     if (listInfoMarker) {
         listInfoMarker.length = 0;
     }
-    count = 0;
 }
 
 function updateInfoMarker(name, position) {
@@ -142,14 +126,11 @@ function updateInfoMarker(name, position) {
     var lng = parseFloat(location[1]);
     
     //cari elemen di listInfoMarker yang name=name
-    var i = 0;
-    var found = false;
-    while (i<listInfoMarker.length && !found) {
-        if (listInfoMarker[i][0] == name) {       //update lat sama lng
-            listInfoMarker[i][1] = lat;
-            listInfoMarker[i][2] = lng;
-            found = true;
-        }
-        ++i;
-    }
+    deleteListInfoMarker();
+    addListInfoMarker(name, lat, lng);
+}
+
+function sendLocation() {
+    $('input[name=lat_hidden]').attr('value', listInfoMarker[0][1]);
+    $('input[name=lon_hidden]').attr('value', listInfoMarker[0][2]);
 }
