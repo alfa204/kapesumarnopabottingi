@@ -131,6 +131,6 @@ function updateInfoMarker(name, position) {
 }
 
 function sendLocation() {
-    $('input[name=lat_hidden]').attr('value', listInfoMarker[0][1]);
-    $('input[name=lon_hidden]').attr('value', listInfoMarker[0][2]);
+    $('input[name=lat]').attr('value', listInfoMarker[0][1]);
+    $('input[name=lon]').attr('value', listInfoMarker[0][2]);
 }
