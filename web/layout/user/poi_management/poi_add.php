@@ -61,8 +61,18 @@
                         </div>
                         or input directly the location coordinate (latitude-longitude)
                         <br/>
-                        <input type="text" id="lat" name="lat">
-                        <input type="text" id="lon" name="lon">
+                        <table>
+                            <tr>
+                                <td>latitude</td>
+                                <td> : </td>
+                                <td><input type="text" id="lat" name="lat"></td>
+                            </tr>
+                            <tr>
+                                <td>longitude</td>
+                                <td> : </td>
+                                <td><input type="text" id="lon" name="lon"></td>
+                            </tr>
+                        </table>
                     </div>
                 </td>
             </tr>
