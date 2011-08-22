@@ -78,6 +78,7 @@ $poiname = $_GET['poiname'];
                             <td><?php echo $row2['label']; ?></td>
                             <td><?php echo $row2['start_date']; ?></td>
                             <td><?php echo $row2['end_date']; ?></td>
+                            <td><button onclick="buttonOnClick('layout/user/poi_management/poi_publishingtime_edit.php?publishingtime_id=<?php echo $row2['id']; ?>&poi_id=<?php echo $row2['poi_id']; ?>','editcontent')">EDIT</button></td>
                         </tr>
                         <?php
                     }
