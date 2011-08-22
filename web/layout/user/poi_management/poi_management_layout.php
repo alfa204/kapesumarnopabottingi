@@ -65,6 +65,7 @@ $session = new SessionHandler();
             <?php
         }
         ?>
+        <br/>
         <div>
             <button onclick="buttonOnClick('layout/user/poi_management/poi_add.php?','addpoi')">Create New POI</button>
         </div>
