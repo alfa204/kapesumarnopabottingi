@@ -22,7 +22,7 @@
             $database->execQuery($queryUpdate);
         endforeach;
     } else if ($action=='delete') {
-        // delete poi
+        // delete tagline
         foreach($checked as $id) :
             $queryDelete = "DELETE FROM ".$database->t_tagline."
                             WHERE
