@@ -432,10 +432,10 @@ function Gettransform($poi, $db) {
 
 
 /* Pre-define connection to the MySQL database, please specify these fields. */
-$dbhost = 'box9.host1free.com';
-$dbdata = 'testin75_POIDB';
-$dbuser = 'testin75_root';
-$dbpass = 'root123';
+$dbhost = 'sql100.byethost5.com';
+$dbdata = 'b5_8814437_poidb';
+$dbuser = 'b5_8814437';
+$dbpass = '123456';
 
 /* Put parameters from GetPOI request into an associative array named $value */
 
@@ -500,9 +500,15 @@ if (is_bool($resultApprovedAndUnpublished)) {
         $resultWaktuTayang = $db->execQuery($queryWaktuTayang);
         while ($rowResultWaktuTayang = mysql_fetch_array($resultWaktuTayang, MYSQL_ASSOC)) {
 
+            //KASUS INI TESTED OK
             if ($mysqldatetoday == $rowResultWaktuTayang['start_date']) {
                 //Insert ke POI Layar:
-                echo "hai masuk sini kk";
+                //Ngambil tagline dari tabel tagline : 
+                $queryTagline = "SELECT * FROM " . $db->t_tagline . " WHERE poi_id = " . $rowResultApprovedAndUnpublished['id'] . "";
+                //Eksekusi query tagline:
+                $resultTagline = $db->execQuery($queryTagline);
+                $rowResultTagline = mysql_fetch_array($resultTagline, MYSQL_ASSOC);
+
                 $queryInsert = "INSERT INTO " . $db->t_poilayar . "(
                                 poi_id,
                                 userid,
@@ -528,7 +534,7 @@ if (is_bool($resultApprovedAndUnpublished)) {
                             ) VALUES (
                                 '" . $rowResultApprovedAndUnpublished['id'] . "',
                                 '" . $rowResultApprovedAndUnpublished['user_id'] . "',
-                                'Ini ngambil dari tabel tagline',
+                                '" . $rowResultTagline['text'] . "',
                                 '" . $rowResultApprovedAndUnpublished['title'] . "',
                                 '" . $rowResultApprovedAndUnpublished['lat'] . "',
                                 '" . $rowResultApprovedAndUnpublished['lon'] . "',
@@ -558,10 +564,18 @@ if (is_bool($resultApprovedAndUnpublished)) {
                 $db->execQuery($queryUpdate);
             } else if ($rowResultApprovedAndUnpublished['start_date'] < $mysqldatetoday && $mysqldatetoday < $rowResultApprovedAndUnpublished['end_date']) {
                 //between
+                //
+                //Ambil tagline :
+                //Ngambil tagline dari tabel tagline : 
+                $queryTagline = "SELECT * FROM " . $db->t_tagline . " WHERE poi_id = " . $rowResultApprovedAndUnpublished['id'] . "";
+                //Eksekusi query tagline:
+                $resultTagline = $db->execQuery($queryTagline);
+                $rowResultTagline = mysql_fetch_array($resultTagline, MYSQL_ASSOC);
+
                 //Update semua informasi dari poi_table dengan poi_id yang bersangkutan
                 $queryUpdate = "UPDATE " . $db->t_poilayar . " 
                                 SET 
-                                    attribution     = 'Ini ngambil dari tabel tagline',,
+                                    attribution     = '" . $rowResultTagline['text'] . "',
                                     imageURL        = '" . $rowResultApprovedAndUnpublished['imageURL'] . "',
                                     line4           = '" . $rowResultApprovedAndUnpublished['email'] . "',
                                     line3           = '" . $rowResultApprovedAndUnpublished['phone'] . "',
@@ -589,14 +603,14 @@ $queryPublished = "SELECT * FROM " . $db->t_poi . " WHERE poi_status_id=3";
 $resultPublished = $db->execQuery($queryPublished);
 if (is_bool($resultPublished)) {
     echo "Gak ada poi dengan status = 3 di tabel POI.<br>";
-} else {
+} else { //KASUS INI OK TESTED
     while ($rowResultPublished = mysql_fetch_array($resultPublished, MYSQL_ASSOC)) {
         //Untuk setiap row ini, cek waktu tayang :
         $queryWaktuTayang = "SELECT * FROM " . $db->t_waktutayang . " WHERE poi_id = " . $rowResultPublished['id'] . "";
         //Exec Query :
         $resultWaktuTayang = $db->execQuery($queryWaktuTayang);
         while ($rowResultWaktuTayang = mysql_fetch_array($resultWaktuTayang, MYSQL_ASSOC)) {
-            if ($mysqldatetoday == $rowResultWaktuTayang['end_date']) {
+            if ($mysqldatetoday >= $rowResultWaktuTayang['end_date']) {
                 //Delete dari POI Layar:
                 $queryDelete = "DELETE 
                             FROM " . $db->t_poilayar . "
@@ -655,38 +669,37 @@ if (is_bool($resultRejected)) {
 
 
 
- //SELECT semua data dari dynamictext yang udah diapprove dan start datenya sama ma hari ini
-  $querySelectStartDate = "SELECT * FROM ".$db->t_tagline." WHERE tagline_status_id=2 AND  start_date=".$today."";
-  $querySelectEndDate = "SELECT * FROM ".$db->t_tagline." WHERE tagline_status_id=2 AND  end_date=".$yesterday."";
+//SELECT semua data dari dynamictext yang udah diapprove dan start datenya sama ma hari ini
+$querySelectStartDate = "SELECT * FROM " . $db->t_tagline . " WHERE tagline_status_id=2 AND  start_date='" . $mysqldatetoday . "'";
+$querySelectEndDate = "SELECT * FROM " . $db->t_tagline . " WHERE tagline_status_id=2 AND  end_date='" . $mysqldateyesterday . "'";
+//Exec Query
+$resultStart = $db->execQuery($querySelectStartDate);
+$resultEnd = $db->execQuery($querySelectEndDate);
 
-  //Exec Query
-  $resultStart = $db->execQuery($querySelectStartDate);
-  $resultEnd = $db->execQuery($querySelectEndDate);
-
-  //Update StartDate :
-  while ($rowStart = mysql_fetch_array($resultStart, MYSQL_ASSOC)) {
-  $text = $rowStart['text'];
-  $poi_id = $rowStart['poi_id'];
-  $queryUpdateStart = "UPDATE ".$db->t_poilayar."
+//Update StartDate :
+while ($rowStart = mysql_fetch_array($resultStart, MYSQL_ASSOC)) {
+    $text = $rowStart['text'];
+    $poi_id = $rowStart['poi_id'];
+    $queryUpdateStart = "UPDATE " . $db->t_poilayar . "
   SET
   attribution='$text'
   WHERE
-  id = '$poi_id'";
-  $db->execQuery($queryUpdateStart);
-  }
+  poi_id = '$poi_id'";
+    $db->execQuery($queryUpdateStart);
+}
 
-  //Update EndDate :
-  //Update StartDate :
-  while ($rowEnd = mysql_fetch_array($resultEnd, MYSQL_ASSOC)) {
-  $text = "";
-  $poi_id = $rowEnd['poi_id'];
-  $queryUpdateStart = "UPDATE ".$db->t_poilayar."
+//Update EndDate :
+//Update StartDate :
+while ($rowEnd = mysql_fetch_array($resultEnd, MYSQL_ASSOC)) {
+    $text = "";
+    $poi_id = $rowEnd['poi_id'];
+    $queryUpdateStart = "UPDATE " . $db->t_poilayar . "
   SET
   attribution='$text'
   WHERE
-  id = '$poi_id'";
-  $db->execQuery($queryUpdateStart);
-  } 
+  poi_id = '$poi_id'";
+    $db->execQuery($queryUpdateStart);
+}
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
