@@ -102,10 +102,6 @@ $i = 0;
         <option value="change"> - Change Status - </option>
         <option value="approved">Approved</option>
         <option value="rejected">Rejected</option>
-        <option value="pending">Pending</option>
-        <option value="edited">Edited</option>
-        <option value="published">Published</option>
-        <option value="unpublished">Unpublished</option>
     </select>
     <a href="javascript:delete_poi()">Delete</a>
     <?php } ?>

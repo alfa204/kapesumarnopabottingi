@@ -56,10 +56,6 @@ while ($row = mysql_fetch_array($result)) {
                     <option value="change"> - Change Status - </option>
                     <option value="approved">Approved</option>
                     <option value="rejected">Rejected</option>
-                    <option value="pending">Pending</option>
-                    <option value="edited">Edited</option>
-                    <option value="published">Published</option>
-                    <option value="unpublished">Unpublished</option>
                 </select>
                 <a href="javascript:delete_poi('<?php echo $row['id']; ?>')">Delete</a>
             </div>
@@ -127,8 +123,8 @@ while ($row = mysql_fetch_array($result)) {
                                 <input type="checkbox" name="checklist_tagline" value="<?php echo $row3['id']; ?>" />
                             </td>
                             <td><?php echo $row3['text']; ?></td>
-                            <td><?php echo $row3[start_date]; ?></td>
-                            <td><?php echo $row3[end_date]; ?></td>
+                            <td><?php echo $row3['start_date']; ?></td>
+                            <td><?php echo $row3['end_date']; ?></td>
                             <td>
                                 <?php
                                 $query4 = "SELECT label FROM " . $database->t_taglinestatus . " WHERE id=" . $row3['tagline_status_id'];
@@ -140,7 +136,7 @@ while ($row = mysql_fetch_array($result)) {
                                 }
                                 ?>
                             </td>
-                            <td><a href="">Edit</a></td>
+                            <td><a href="javascript:buttonOnClick('layout/admin/poi_management/edit_tagline.php?tagline=<?php echo $row3['id']; ?>','showpoi')">Edit</a></td>
                         </tr>
                         <?php
                     }
