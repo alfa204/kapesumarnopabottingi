@@ -390,11 +390,28 @@ try {
 	//$arml->setIcon();
 	//$arml->setLogo();
 	
-	// get array of poi
-	$arml->addPOIList(Gethotspots($db, $value));
-	
-	// echo the arml to xml string
-	echo $arml->__toString();
+        $poilist = Gethotspots($db, $value);
+        
+        if ( !isset($_GET["json"]) ) {
+            // get array of poi
+            $arml->addPOIList($poilist);
+
+            // echo the arml to xml string
+            echo $arml->__toString();
+        } else {
+            // output in json
+            $poi_array = array();
+            $count = 0;
+            foreach ($poilist as $poi) :
+                $poi_array[$count]['name'] = $poi->getName();
+                $poi_array[$count]['description'] = $poi->getDescription();
+                $poi_array[$count]['longitude'] = $poi->getLongitude();
+                $poi_array[$count]['latitude'] = $poi->getLatitude();
+                $poi_array[$count]['altitude'] = $poi->getAltitude();
+                $count++;
+            endforeach;
+            echo json_encode($poi_array);
+        }
 	
 	/* Close the MySQL connection.*/
 	
