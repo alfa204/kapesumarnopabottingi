@@ -431,12 +431,6 @@ function Gettransform($poi, $db) {
 /* * * Main entry point ** */
 
 
-/* Pre-define connection to the MySQL database, please specify these fields. */
-$dbhost = 'sql100.byethost5.com';
-$dbdata = 'b5_8814437_poidb';
-$dbuser = 'b5_8814437';
-$dbpass = '123456';
-
 /* Put parameters from GetPOI request into an associative array named $value */
 
 // Put needed parameter names from GetPOI request in an array called $keys. 
@@ -459,18 +453,20 @@ try {
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-/* DAEMON DAEMON FUFUFUFU
- * DAEMON DAEMON FUFUFUFU
- * DAEMON DAEMON DAEMONNNNNNNNNN
- * 
- * CRON JOB disini 
+ /*
+ * CRON JOB
  */
-//------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 include_once '../connection/databaseHandler.php';
 $db = new DatabaseHandler();
+
+/* Pre-define connection to the MySQL database, please specify these fields. */
+$dbhost = $db->sqlURL;
+$dbdata = $db->sqlDBName;
+$dbuser = $db->sqlUsername;
+$dbpass = $db->sqlPassword;
+
 $today = mktime(0, 0, 0, date("m"), date("d"), date("Y"));
 $yesterday = mktime(0, 0, 0, date("m"), date("d") - 1, date("Y"));
 
@@ -490,51 +486,33 @@ $queryApprovedAndUnpublished = "SELECT * FROM " . $db->t_poi . " WHERE poi_statu
 $resultApprovedAndUnpublished = $db->execQuery($queryApprovedAndUnpublished);
 
 if (is_bool($resultApprovedAndUnpublished)) {
-    echo "Gak ada poi dengan status = 2 atau status = 4 di tabel POI.<br>";
+    //echo "Gak ada poi dengan status = 2 atau status = 4 di tabel POI.<br>";
 } else {
     while ($rowResultApprovedAndUnpublished = mysql_fetch_array($resultApprovedAndUnpublished, MYSQL_ASSOC)) {
-
-//Untuk setiap row ini, cek waktu tayang :
+        //Untuk setiap row ini, cek waktu tayang :
         $queryWaktuTayang = "SELECT * FROM " . $db->t_waktutayang . " WHERE poi_id = " . $rowResultApprovedAndUnpublished['id'] . "";
         //Exec Query :
         $resultWaktuTayang = $db->execQuery($queryWaktuTayang);
         while ($rowResultWaktuTayang = mysql_fetch_array($resultWaktuTayang, MYSQL_ASSOC)) {
-
             //KASUS INI TESTED OK
             if ($mysqldatetoday == $rowResultWaktuTayang['start_date']) {
                 //Insert ke POI Layar:
-                //Ngambil tagline dari tabel tagline : 
-                $queryTagline = "SELECT * FROM " . $db->t_tagline . " WHERE poi_id = " . $rowResultApprovedAndUnpublished['id'] . "";
-                //Eksekusi query tagline:
-                $resultTagline = $db->execQuery($queryTagline);
-                $rowResultTagline = mysql_fetch_array($resultTagline, MYSQL_ASSOC);
-
                 $queryInsert = "INSERT INTO " . $db->t_poilayar . "(
-                                poi_id,
-                                userid,
-                                attribution,
-                                title,
-                                lat,
-                                lon,
-                                imageURL,
-                                line4,
-                                line3,
-                                line2,
-                                type,
-                                dimension,
-                                alt,
-                                relativeAlt,
-                                distance,
-                                inFocus,
-                                doNotIndex,
-                                showSmallBiw,
-                                showBiwOnClick,
-                                kategori,
+                                poi_id, userid,
+                                attribution, title,
+                                lat, lon,
+                                imageURL, line4, 
+                                line3, line2,
+                                type, dimension,
+                                alt, relativeAlt,
+                                distance, inFocus,
+                                doNotIndex, showSmallBiw,
+                                showBiwOnClick, kategori,
                                 deskripsi
                             ) VALUES (
                                 '" . $rowResultApprovedAndUnpublished['id'] . "',
                                 '" . $rowResultApprovedAndUnpublished['user_id'] . "',
-                                '" . $rowResultTagline['text'] . "',
+                                '',
                                 '" . $rowResultApprovedAndUnpublished['title'] . "',
                                 '" . $rowResultApprovedAndUnpublished['lat'] . "',
                                 '" . $rowResultApprovedAndUnpublished['lon'] . "',
@@ -542,14 +520,10 @@ if (is_bool($resultApprovedAndUnpublished)) {
                                 '" . $rowResultApprovedAndUnpublished['email'] . "',
                                 '" . $rowResultApprovedAndUnpublished['phone'] . "',
                                 '" . $rowResultApprovedAndUnpublished['address'] . "',
-                                0,
-                                1,
-                                '',
-                                '',
-                                0.0000000000,
-                                0,
-                                0,
-                                1,
+                                0, 1,
+                                '', '',
+                                0.0000000000, 0,
+                                0, 1,
                                 1,
                                 '" . $rowResultApprovedAndUnpublished['kategori'] . "',
                                 '" . $rowResultApprovedAndUnpublished['deskripsi'] . "'
@@ -564,18 +538,10 @@ if (is_bool($resultApprovedAndUnpublished)) {
                 $db->execQuery($queryUpdate);
             } else if ($rowResultApprovedAndUnpublished['start_date'] < $mysqldatetoday && $mysqldatetoday < $rowResultApprovedAndUnpublished['end_date']) {
                 //between
-                //
-                //Ambil tagline :
-                //Ngambil tagline dari tabel tagline : 
-                $queryTagline = "SELECT * FROM " . $db->t_tagline . " WHERE poi_id = " . $rowResultApprovedAndUnpublished['id'] . "";
-                //Eksekusi query tagline:
-                $resultTagline = $db->execQuery($queryTagline);
-                $rowResultTagline = mysql_fetch_array($resultTagline, MYSQL_ASSOC);
-
                 //Update semua informasi dari poi_table dengan poi_id yang bersangkutan
                 $queryUpdate = "UPDATE " . $db->t_poilayar . " 
                                 SET 
-                                    attribution     = '" . $rowResultTagline['text'] . "',
+                                    attribution     = '',
                                     imageURL        = '" . $rowResultApprovedAndUnpublished['imageURL'] . "',
                                     line4           = '" . $rowResultApprovedAndUnpublished['email'] . "',
                                     line3           = '" . $rowResultApprovedAndUnpublished['phone'] . "',
@@ -602,8 +568,9 @@ $queryPublished = "SELECT * FROM " . $db->t_poi . " WHERE poi_status_id=3";
 //Eksekusi query : 
 $resultPublished = $db->execQuery($queryPublished);
 if (is_bool($resultPublished)) {
-    echo "Gak ada poi dengan status = 3 di tabel POI.<br>";
-} else { //KASUS INI OK TESTED
+    //echo "Gak ada poi dengan status = 3 di tabel POI.<br>";
+} else { 
+    //KASUS INI OK TESTED
     while ($rowResultPublished = mysql_fetch_array($resultPublished, MYSQL_ASSOC)) {
         //Untuk setiap row ini, cek waktu tayang :
         $queryWaktuTayang = "SELECT * FROM " . $db->t_waktutayang . " WHERE poi_id = " . $rowResultPublished['id'] . "";
@@ -618,7 +585,7 @@ if (is_bool($resultPublished)) {
                 //Exec queryDelete :
                 $db->execQuery($queryDelete);
 
-                //Update POI_Table row ini statusnya jadi UnPublished (3)
+                //Update POI_Table row ini statusnya jadi UnPublished (4)
                 $queryUpdate = "UPDATE " . $db->t_poi . " 
                             SET poi_status_id = 4
                             WHERE id = " . $rowResultPublished['id'] . "";
@@ -640,13 +607,13 @@ if (is_bool($resultPublished)) {
 
 // Cek yang Rejected di Poi table 
 // Kalo rejected, cek waktutayang_table
-// 1. Kalo end : dekete di 
+// 1. Kalo end : delete di 
 $queryRejected = "SELECT * FROM " . $db->t_poi . " WHERE poi_status_id=6";
 
 //Eksekusi query :
 $resultRejected = $db->execQuery($queryRejected);
 if (is_bool($resultRejected)) {
-    echo "Gak ada POI dengan status = 6 di tabel POI";
+    //echo "Gak ada POI dengan status = 6 di tabel POI";
 } else {
     while ($rowResultRejected = mysql_fetch_array($resultRejected, MYSQL_ASSOC)) {
         //Untuk setiap row ini, cek waktu tayang :
@@ -667,9 +634,7 @@ if (is_bool($resultRejected)) {
 }
 
 
-
-
-//SELECT semua data dari dynamictext yang udah diapprove dan start datenya sama ma hari ini
+//SELECT semua data dari tagline yang udah diapprove dan start datenya sama ma hari ini
 $querySelectStartDate = "SELECT * FROM " . $db->t_tagline . " WHERE tagline_status_id=2 AND  start_date='" . $mysqldatetoday . "'";
 $querySelectEndDate = "SELECT * FROM " . $db->t_tagline . " WHERE tagline_status_id=2 AND  end_date='" . $mysqldateyesterday . "'";
 //Exec Query
@@ -689,7 +654,6 @@ while ($rowStart = mysql_fetch_array($resultStart, MYSQL_ASSOC)) {
 }
 
 //Update EndDate :
-//Update StartDate :
 while ($rowEnd = mysql_fetch_array($resultEnd, MYSQL_ASSOC)) {
     $text = "";
     $poi_id = $rowEnd['poi_id'];
@@ -703,17 +667,9 @@ while ($rowEnd = mysql_fetch_array($resultEnd, MYSQL_ASSOC)) {
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
 /**
  * END OF DAEMON
- * 
- * DAEMON PENSIUN
- * DAEMON UDAH LULUS
- * DAEMON DIPECAT
- * 
- * END OF KEDODOLAN
  */
-//------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 
