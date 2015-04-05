@@ -1,0 +1,1 @@
+Bukan proyek apa-apa, karena kami bukan programmer, kami hanyalah seorang gembala di sawah tandus nan gersang
